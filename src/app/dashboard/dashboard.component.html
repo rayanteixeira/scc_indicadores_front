@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="container-fluid">
-     
+
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -58,6 +58,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+        <div class="col-md-12 selectDate">
+            <select class="col-md-1 selectYear" >
+                <option>Dia</option>
+                <option *ngFor="let dia of days">{{dia}}</option>
+            </select>
+            <select class="col-md-1" >
+                <option>Mês</option>
+                <option *ngFor="let mes of months">{{mes}}</option>
+            </select>
+            <select class="col-md-1" >
+                <option>Ano</option>
+                <option *ngFor="let ano of years">{{ano}}</option>
+            </select>
+
+        </div>
+    </div>
+
 
         <!-- SOCOCO -->
         <div class="card">

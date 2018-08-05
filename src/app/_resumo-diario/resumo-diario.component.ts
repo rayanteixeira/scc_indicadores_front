@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { ResumoDiarioService } from './resumo-diario.service';
+import {FormControl, Validators,  FormGroup, FormBuilder, FormGroupDirective} from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-resumo-diario',
@@ -11,9 +14,6 @@ import { ResumoDiarioService } from './resumo-diario.service';
 })
 export class ResumoDiarioComponent implements OnInit {
 
-
-
-  date = new Date();
 
   formulario: FormGroup;
 
@@ -25,28 +25,16 @@ export class ResumoDiarioComponent implements OnInit {
     private resumoService: ResumoDiarioService,
   ) { }
 
+
+
   ngOnInit() {
     this.title.setTitle('Cadastro lançamento');
     this.form();
   }
 
-  onSubmit(formulario: FormGroup) {
-    console.log(formulario);
-    this.loader = true;
-    this.resumoService.adicionar(formulario)
-      .subscribe(response => {
-        console.log(response);
 
 
-        this.formulario.reset();
-
-        this.loader = false;
-      });
-
-
-  }
-
-  private form() {
+  form() {
     this.formulario = this.fb.group({
       'cocosDesfibrados': new FormControl('', Validators.required),
       'cocosProcessados': new FormControl('', Validators.required),
@@ -62,6 +50,21 @@ export class ResumoDiarioComponent implements OnInit {
       'caixaPadrao': new FormControl('', Validators.required),
       'totalDeCacambas': new FormControl('', Validators.required),
     })
+  }
+
+  onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
+    console.log(formulario);
+    this.loader = true;
+    this.resumoService.adicionar(formulario)
+      .subscribe(response => {
+        console.log(response);
+
+        formDirective.resetForm();
+        this.formulario.reset();
+        this.loader = false;
+      });
+
+
   }
 
 }

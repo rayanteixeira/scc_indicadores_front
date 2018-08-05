@@ -6,8 +6,6 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 
-
-
 import {
   MatButtonModule,
   MatInputModule,
@@ -15,6 +13,7 @@ import {
   MatTooltipModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { DashboardService } from '../../dashboard/dashboard.service';
@@ -34,6 +33,7 @@ import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service'
     MatDatepickerModule,
     MatNativeDateModule, 
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     AmChartsModule
   ],
   declarations: [

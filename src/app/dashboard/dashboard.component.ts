@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { DashboardService, DashboardFilter } from './dashboard.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,7 +13,9 @@ export class DashboardComponent implements OnInit {
   
   data = new DashboardFilter();
   dataProvider = []
-
+  years = [];
+  months = [];
+  days = [];
 
   constructor(  
     private dashboardService: DashboardService,
@@ -22,8 +25,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.service();
+    this.years = [2012, 2013, 2014, 2015, 2017]
+    this.months = ["jan", "fev","mar", "abr", "mai"]
+    this.days = [11, 12, 13, 14, 15]
   }
-
 
 
 

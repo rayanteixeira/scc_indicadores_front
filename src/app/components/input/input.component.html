@@ -1,0 +1,7 @@
+<div class="form-group col-lg-6" [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
+    <label class="col-lg-4 col-form-label form-control-label">{{label}}</label>
+    <div class="col-lg-6">
+        <ng-content></ng-content>
+        <span class="help-block" *ngIf="hasError()"> <i class="ti-alert"></i> {{errorMessage}}</span>
+    </div>
+</div>
