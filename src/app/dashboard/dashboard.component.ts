@@ -10,50 +10,44 @@ import { DashboardService, DashboardFilter } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   private chart: AmChart;
-  
+
   data = new DashboardFilter();
   dataProvider = []
   years = [];
   months = [];
   days = [];
 
-  constructor(  
+  constructor(
     private dashboardService: DashboardService,
     private AmCharts: AmChartsService
   ) { }
- 
 
   ngOnInit() {
     this.service();
-    this.years = [2012, 2013, 2014, 2015, 2017]
-    this.months = ["jan", "fev","mar", "abr", "mai"]
+    this.years = [2012, 2013, 2014, 2015, 2017, 2018]
+    this.months = ['jan', 'fev', 'mar', 'abr', 'mai']
     this.days = [11, 12, 13, 14, 15]
   }
 
+  service(){
+    this.data.dataLancamento = new Date('2018-05-02')
 
-
-  service(){ 
-
-    this.data.dataLancamento = new Date('2018-05-01')
-    
     this.dashboardService.buscarPorData(this.data)
-    .then(resp => {    
+    .then(resp => {
+      console.log(resp);
+      
       resp.forEach( entidade => {
         this.chart = this.AmCharts.makeChart("cocoChart", this.cocoChartOptions(entidade.cocos));
         this.chart = this.AmCharts.makeChart("criFlococoChart", this.criFlococoChartOptions(entidade.criFlococos));
         this.chart = this.AmCharts.makeChart("oleoChart", this.oleoChartChartOptions(entidade.oleos));
         this.chart = this.AmCharts.makeChart("tortaChart", this.tortaChartOptions(entidade.tortas));
-        
         this.chart = this.AmCharts.makeChart("aguaCocoChart", this.aguaCocoChartOptions(entidade.aguaCocos));
         this.chart = this.AmCharts.makeChart("caixaPadraoChart", this.caixaPadraoChartOptions(entidade.caixaPadraos));
         this.chart = this.AmCharts.makeChart("cocoGerminadoChart", this.cocoGerminadoChartOptions(entidade.cocoGerminados));
         this.chart = this.AmCharts.makeChart("totalCacambaChart", this.totalCacambaChartOptions(entidade.totalCacambas));
-       
-        
         this.chart = this.AmCharts.makeChart("totalFardosChart", this.totalFardosChartOptions(entidade.totalFardos));
       }
     );
-   
 
     });
   };
