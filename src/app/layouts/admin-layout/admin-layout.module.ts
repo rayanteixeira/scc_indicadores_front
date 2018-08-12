@@ -18,13 +18,13 @@ import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { DashboardService } from '../../dashboard/dashboard.service';
 import { ResumoDiarioComponent } from '../../_resumo-diario/resumo-diario.component';
 import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { DashboardMesComponent } from '../../dashboard/mes/dashboard-mes.component';
+import { DashboardModule } from '../../dashboard/dashboard.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    DashboardModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
@@ -38,8 +38,6 @@ import { DashboardMesComponent } from '../../dashboard/mes/dashboard-mes.compone
     AmChartsModule
   ],
   declarations: [
-    DashboardComponent,
-    DashboardMesComponent,
     UserProfileComponent,
     ResumoDiarioComponent
   ],

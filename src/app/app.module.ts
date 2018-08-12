@@ -24,9 +24,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
-    DashboardModule
-   
+    })
   ],
   declarations: [
     AppComponent,
