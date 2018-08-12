@@ -28,10 +28,10 @@ export class DashboardMesComponent implements OnInit {
     this.days = [11, 12, 13, 14, 15]
   }
 
-  service() {
+  private service() {
     this.data.dataLancamento = new Date('2018-05-02')
 
-    this.dashboardService.buscarPorData(this.data)
+    this.dashboardService.buscarPorMes(this.data)
       .then(resp => {
         console.log(resp);
 
@@ -52,7 +52,7 @@ export class DashboardMesComponent implements OnInit {
   };
 
   // SOCOCO
-  cocoChartOptions(dataProvider) {
+  private cocoChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -74,7 +74,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  criFlococoChartOptions(dataProvider) {
+  private criFlococoChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -95,7 +95,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  oleoChartChartOptions(dataProvider) {
+  private oleoChartChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -116,7 +116,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  tortaChartOptions(dataProvider) {
+  private tortaChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -133,7 +133,7 @@ export class DashboardMesComponent implements OnInit {
   }
 
   // ACQUA
-  aguaCocoChartOptions(dataProvider) {
+  private aguaCocoChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -154,7 +154,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  cocoGerminadoChartOptions(dataProvider) {
+  private cocoGerminadoChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -170,7 +170,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  totalCacambaChartOptions(dataProvider) {
+  private totalCacambaChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -186,7 +186,7 @@ export class DashboardMesComponent implements OnInit {
     };
   }
 
-  caixaPadraoChartOptions(dataProvider) {
+  private caixaPadraoChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
@@ -203,7 +203,7 @@ export class DashboardMesComponent implements OnInit {
   }
 
   // AMAFIBRA
-  totalFardosChartOptions(dataProvider) {
+  private totalFardosChartOptions(dataProvider) {
     return {
       'hideCredits': true,
       'type': 'serial',
