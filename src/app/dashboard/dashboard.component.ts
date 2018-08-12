@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  dia: boolean;
+  mes = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selecionarDia() {
+    this.dia = true;
+    this.mes = false;
+  }
+  selecionarMes() {
+    this.dia = false;
+    this.mes = true;
   }
 
 }
