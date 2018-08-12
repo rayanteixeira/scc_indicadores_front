@@ -1,10 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
-import { Lancamento } from './resumo-diario.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/catch';
+import { Lancamento, ResumoDiario } from './resumo-diario.model';
+import { ErrorHandler } from '../errorHandler';
+
+
+
+export class Filtro {
+  dataLancamento: Date;
+}
 
 @Injectable()
 export class ResumoDiarioService {
@@ -23,7 +34,7 @@ export class ResumoDiarioService {
       resumoDiario);
   }
 
-  listar(): Promise<any> {
+  public listar(): Promise<any> {
     return this.http.get(`${this.resumoUrl}/lancamentos`)
       .toPromise()
       .then(response => response.json())
@@ -31,6 +42,19 @@ export class ResumoDiarioService {
         Promise.reject(`Erro ao acessar base de dados.`)
       })
   }
+
+  public buscarPorData(filter: Filtro): Observable<ResumoDiario[]> {
+    const params = new URLSearchParams();
+
+    if (filter.dataLancamento) {
+        params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
+    }
+
+    return this.http.get(`${this.resumoUrl}/buscaPorData`,{search: params})
+        .map((resposta: Response) => resposta.json())
+        .catch(ErrorHandler.handlerError);
+}
+
 
   public pesquisar(filtro: Filtro): Promise<Lancamento[]> {
 
@@ -51,9 +75,10 @@ export class ResumoDiarioService {
 
   }
 
+  public getResumoDiario(): Observable<ResumoDiario[]> {
+    return this.http.get(`${this.resumoUrl}/resumo-do-dia`)
+        .map((resposta: Response) => resposta.json())
+        .catch(ErrorHandler.handlerError);
 }
-
-export class Filtro {
-  dataLancamento: Date;
 }
 
