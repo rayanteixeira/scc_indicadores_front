@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
-import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment';
 

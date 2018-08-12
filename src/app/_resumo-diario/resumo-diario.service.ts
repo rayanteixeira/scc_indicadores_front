@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
-import { environment } from '../../environments/environment';
+import { environment } from 'environments/environment';
 
 import * as moment from 'moment';
 import { Observable } from 'rxjs';

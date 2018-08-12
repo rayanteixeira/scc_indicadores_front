@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 
 import {
@@ -15,10 +14,12 @@ import {
   MatNativeDateModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
-import { AmChartsModule } from "@amcharts/amcharts3-angular";
+import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { DashboardService } from '../../dashboard/dashboard.service';
 import { ResumoDiarioComponent } from '../../_resumo-diario/resumo-diario.component';
 import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service';
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { DashboardMesComponent } from '../../dashboard/mes/dashboard-mes.component';
 
 
 @NgModule({
@@ -31,13 +32,14 @@ import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service'
     MatInputModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     AmChartsModule
   ],
   declarations: [
     DashboardComponent,
+    DashboardMesComponent,
     UserProfileComponent,
     ResumoDiarioComponent
   ],
