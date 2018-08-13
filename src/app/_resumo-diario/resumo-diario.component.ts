@@ -25,8 +25,6 @@ export class ResumoDiarioComponent implements OnInit {
     private resumoService: ResumoDiarioService,
   ) { }
 
-
-
   ngOnInit() {
     this.title.setTitle('Cadastro lançamento');
     this.form();

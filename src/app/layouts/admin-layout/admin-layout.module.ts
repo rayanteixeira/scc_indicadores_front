@@ -13,12 +13,17 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatProgressSpinnerModule,
+  MatFormFieldModule,
+  MAT_LABEL_GLOBAL_OPTIONS,
+  MatTableModule,
 } from '@angular/material';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { DashboardService } from '../../dashboard/dashboard.service';
 import { ResumoDiarioComponent } from '../../_resumo-diario/resumo-diario.component';
 import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service';
+import { ResumoDoDiaComponent } from '../../_resumo-diario/_resumo-diario-lista/resumo-do-dia.component';
 import { DashboardModule } from '../../dashboard/dashboard.module';
+
 
 
 @NgModule({
@@ -35,13 +40,16 @@ import { DashboardModule } from '../../dashboard/dashboard.module';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    AmChartsModule
+    AmChartsModule,
+    MatFormFieldModule,
+    MatTableModule,
   ],
   declarations: [
     UserProfileComponent,
-    ResumoDiarioComponent
+    ResumoDiarioComponent,
+    ResumoDoDiaComponent
   ],
-  providers: [DashboardService, ResumoDiarioService]
+  providers: [DashboardService, ResumoDiarioService, {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}]
 
 })
 
