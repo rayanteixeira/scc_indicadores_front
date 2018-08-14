@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
-import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/catch';
+import { Http, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment';
-
 
 export class DashboardFilter {
     dataLancamento: Date;
 }
 
-
 @Injectable()
 export class DashboardService {
 
-    constructor(private http: Http) {
+    constructor(private http: Http) { }
 
+    public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
+        const params = new URLSearchParams();
+
+        if (filter.dataLancamento) {
+            params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
+        }
+
+        return this.http.get(`${environment.base_url}/dashboard/ano`,
+            { search: params })
+            .toPromise()
+            .then(resposta => {
+                const lancamento = resposta.json();
+                console.log(lancamento);
+                return lancamento;
+            }
+            );
     }
 
-    public buscarPorData(filter: DashboardFilter): Promise<any[]> {
+    public buscarPorDia(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
 
         if (filter.dataLancamento) {
@@ -31,14 +39,14 @@ export class DashboardService {
         }
 
         return this.http.get(`${environment.base_url}/dashboard/mes`,
-        {search: params})
-        .toPromise()    
-        .then(resposta => 
-            {
-               const lancamento = resposta.json()
-               return lancamento;
+            { search: params })
+            .toPromise()
+            .then(resposta => {
+                const lancamento = resposta.json();
+                console.log(lancamento);
+                return lancamento;
             }
-        );
+            );
     }
-    
+
 }
