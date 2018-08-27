@@ -47,8 +47,11 @@ export class ResumoDoDiaComponent implements OnInit {
           this.dataRows = resumoDiario;
           // TOTAL DE CRI & FLOCOCO // TOTAL DE RENDIMENTO
           this.dataRows.forEach(resumo => {
+            // tslint:disable-next-line:radix
             this.totalcriflococo = parseInt(resumo.cri) + parseInt(resumo.flococo);
+            // tslint:disable-next-line:radix
             this.rendimento = (this.totalcriflococo / parseInt(resumo.cocosProcessados)).toFixed(3);
+            // tslint:disable-next-line:radix
             this.totalAguaDeCoco = parseInt(resumo.aguaDeCocoSococo) + parseInt(resumo.aguaDeCocoVerde)
           });
         } else {
@@ -56,7 +59,7 @@ export class ResumoDoDiaComponent implements OnInit {
           this.totalcriflococo = 0;
           this.rendimento = 0;
           this.totalAguaDeCoco = 0;
-          let resumo = new ResumoDiario(event, null, null, null, null, null, null, null, null, null, null, null, null, null);
+          const resumo = new ResumoDiario(event, null, null, null, null, null, null, null, null, null, null, null, null, null);
           this.dataRows.push(resumo)
         }
       });
@@ -66,14 +69,16 @@ export class ResumoDoDiaComponent implements OnInit {
     this.sococoService.getResumoDiario()
       .subscribe((resumoDiario: ResumoDiario[]) => {
         console.log(resumoDiario);
-       
         if (resumoDiario.length > 0) {
           this.dataRows = resumoDiario;
           // TOTAL DE CRI & FLOCOCO // TOTAL DE RENDIMENTO
           this.dataRows.forEach(resumo => {
             this.filtro.dataLancamento = resumo.dataLancamento;
+            // tslint:disable-next-line:radix
             this.totalcriflococo = parseInt(resumo.cri) + parseInt(resumo.flococo);
+            // tslint:disable-next-line:radix
             this.rendimento = (this.totalcriflococo / parseInt(resumo.cocosProcessados)).toFixed(3);
+            // tslint:disable-next-line:radix
             this.totalAguaDeCoco = parseInt(resumo.aguaDeCocoSococo) + parseInt(resumo.aguaDeCocoVerde)
           });
         } else {
@@ -81,7 +86,7 @@ export class ResumoDoDiaComponent implements OnInit {
           this.totalcriflococo = 0;
           this.rendimento = 0;
           this.totalAguaDeCoco = 0;
-          let resumo = new ResumoDiario(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+          const resumo = new ResumoDiario(null, null, null, null, null, null, null, null, null, null, null, null, null, null);
           this.dataRows.push(resumo)
         }
       });

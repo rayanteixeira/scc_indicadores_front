@@ -27,15 +27,15 @@ export class ResumoDiarioService {
   ) { }
 
   public adicionar(resumoDiario: any): Observable<any> {
-    //const headers: Headers = new Headers();
-    //headers.append('Content-type', 'application/json')
+    // const headers: Headers = new Headers();
+    // headers.append('Content-type', 'application/json')
     return this.http.post(
-      `${this.resumoUrl}/lancamento-do-dia`,
+      `${this.resumoUrl}/salva-resumo`,
       resumoDiario);
   }
 
   public listar(): Promise<any> {
-    return this.http.get(`${this.resumoUrl}/lancamentos`)
+    return this.http.get(`${this.resumoUrl}/lista-resumo`)
       .toPromise()
       .then(response => response.json())
       .catch(erro => {
@@ -50,11 +50,10 @@ export class ResumoDiarioService {
         params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
     }
 
-    return this.http.get(`${this.resumoUrl}/buscaPorData`,{search: params})
+    return this.http.get(`${this.resumoUrl}/busca-por-data`, {search: params})
         .map((resposta: Response) => resposta.json())
         .catch(ErrorHandler.handlerError);
-}
-
+  }
 
   public pesquisar(filtro: Filtro): Promise<Lancamento[]> {
 
@@ -65,7 +64,7 @@ export class ResumoDiarioService {
         moment(filtro.dataLancamento).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.resumoUrl}/buscaPorData`,
+    return this.http.get(`${this.resumoUrl}/busca-por-data`,
       { search: params })
       .toPromise()
       .then(response => {
