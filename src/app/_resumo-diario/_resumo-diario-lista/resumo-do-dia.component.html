@@ -1,9 +1,8 @@
 <div class="main-content">
     <div class="row">
-        <div class="col-md-12" *ngFor="let row of dataRows">
-
+        <div class="col-md-12" >
             <div>
-                <label>Resumo do dia: </label>
+                <b>BUSCAR: </b>
                 <input type="date" [(ngModel)]="filtro.dataLancamento" (ngModelChange)="buscaPorData($event)">
                 <!-- <h5>{{row.dataLancamento | date: 'dd/MM/yyyy'}}</h5> -->
             </div>
@@ -24,13 +23,13 @@
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let row of dataRows">
                                     <tr>
                                         <th>Cocos Processados (und)</th>
                                         <td>{{(row.cocosProcessados != null) ? row.cocosProcessados : 0 }}</td>
                                         <td></td>
                                         <td>{{(row.cocosProcessados != null) ? row.cocosProcessados : 0 }}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[0]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -38,7 +37,7 @@
                                         <td>{{(row.cocosDesfibrados != null) ? row.cocosDesfibrados : 0}}</td>
                                         <td></td>
                                         <td>{{(row.cocosDesfibrados != null) ? row.cocosDesfibrados : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[1]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -56,7 +55,7 @@
                                         <td>{{(row.cri != null) ? row.cri : 0}}</td>
                                         <td></td>
                                         <td>{{(row.cri != null) ? row.cri : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[2]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -64,7 +63,7 @@
                                         <td>{{(row.flococo != null) ? row.flococo : 0}}</td>
                                         <td></td>
                                         <td>{{(row.flococo != null) ? row.flococo : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[3]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -82,7 +81,7 @@
                                         <td>{{(row.oleoIndustrialTipoA != null) ? row.oleoIndustrialTipoA : 0 }}</td>
                                         <td></td>
                                         <td>{{(row.oleoIndustrialTipoA != null) ? row.oleoIndustrialTipoA : 0 }}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[4]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -90,7 +89,7 @@
                                         <td>{{(row.oleoIndustrialETE != null) ? row.oleoIndustrialETE : 0}}</td>
                                         <td></td>
                                         <td>{{(row.oleoIndustrialETE != null) ? row.oleoIndustrialETE : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[5]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -98,7 +97,7 @@
                                         <td>{{(row.torta != null) ? row.torta : 0}}</td>
                                         <td></td>
                                         <td>{{(row.torta != null) ? row.torta : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[6]}}</td>
                                         <td></td>
                                     </tr>
                                     <!-- PRODUCAO ACQUA -->
@@ -114,7 +113,7 @@
                                         <td>{{(row.aguaDeCocoSococo != null) ? row.aguaDeCocoSococo : 0 }}</td>
                                         <td></td>
                                         <td>{{(row.aguaDeCocoSococo != null) ? row.aguaDeCocoSococo : 0 }}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[7]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -122,7 +121,7 @@
                                         <td>{{(row.aguaDeCocoVerde != null) ? row.aguaDeCocoVerde : 0}}</td>
                                         <td></td>
                                         <td>{{(row.aguaDeCocoVerde != null) ? row.aguaDeCocoVerde : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[8]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -140,7 +139,7 @@
                                         <td>{{(row.caixaPadrao != null) ? row.caixaPadrao : 0}}</td>
                                         <td></td>
                                         <td>{{(row.caixaPadrao != null) ? row.caixaPadrao : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[9]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -148,7 +147,7 @@
                                         <td>{{(row.porcentagemCocoGerminado != null) ? row.porcentagemCocoGerminado : 0}}</td>
                                         <td></td>
                                         <td>{{(row.porcentagemCocoGerminado != null) ? row.porcentagemCocoGerminado : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[10]}}</td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -156,7 +155,7 @@
                                         <td>{{(row.totalDeCacambas != null) ? row.totalDeCacambas : 0}}</td>
                                         <td></td>
                                         <td>{{(row.totalDeCacambas != null) ? row.totalDeCacambas : 0}}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[11]}}</td>
                                         <td></td>
                                     </tr>
 
@@ -176,7 +175,7 @@
                                         <td>{{(row.numeroDeFardos != null) ? row.numeroDeFardos : 0 }}</td>
                                         <td></td>
                                         <td>{{(row.numeroDeFardos != null) ? row.numeroDeFardos : 0 }}</td>
-                                        <td></td>
+                                        <td>{{totalSemana[12]}}</td>
                                         <td></td>
                                     </tr>
                                 </tbody>

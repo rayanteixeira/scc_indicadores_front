@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ResumoDiarioService, Filtro } from '../resumo-diario.service';
-import { ResumoDiario } from '../resumo-diario.model';
+import { ResumoDiario, TabelaResumosDiarios } from '../resumo-diario.model';
 import { MAY } from '@angular/material';
 
 
@@ -20,49 +20,63 @@ export class ResumoDoDiaComponent implements OnInit {
   filtro: Filtro = new Filtro();
 
   headerRow: String[];
-  dataRows: ResumoDiario[];
+  dataRows = [];
   resumoDiario: ResumoDiario;
-
+  totalSemana = [];
+  totalMes = [];
   rendimento: any;
   totalcriflococo: number;
   totalAguaDeCoco: number;
+
+  tabela: TabelaResumosDiarios[];
+
+
   constructor(
     private sococoService: ResumoDiarioService
   ) { }
 
   ngOnInit() {
     this.listaHeaderRow();
-    this.getResumoDiario();
+  //  this.getResumoDiario();
   }
 
   public buscaPorData(event) {
 
-    this.filtro.dataLancamento = event
-    console.log(event);
-    this.sococoService.buscarPorData(this.filtro)
-      .subscribe((resumoDiario: ResumoDiario[]) => {
-        console.log(resumoDiario);
+    this.dataRows = [];
+    this.totalMes = [];
+    this.totalSemana = [] ;
 
-        if (resumoDiario.length > 0) {
-          this.dataRows = resumoDiario;
-          // TOTAL DE CRI & FLOCOCO // TOTAL DE RENDIMENTO
-          this.dataRows.forEach(resumo => {
-            // tslint:disable-next-line:radix
+    this.filtro.dataLancamento = event
+    this.sococoService.buscarPorData(this.filtro)
+      .subscribe((resumosDiariosTabelas) => { 
+         console.log(resumosDiariosTabelas)     
+        if (resumosDiariosTabelas) {          
+          //TOTAL DE CRI & FLOCOCO // TOTAL DE RENDIMENTO
+          resumosDiariosTabelas.forEach(resumo => {
+            this.dataRows.push(resumo);
             this.totalcriflococo = parseInt(resumo.cri) + parseInt(resumo.flococo);
-            // tslint:disable-next-line:radix
             this.rendimento = (this.totalcriflococo / parseInt(resumo.cocosProcessados)).toFixed(3);
-            // tslint:disable-next-line:radix
             this.totalAguaDeCoco = parseInt(resumo.aguaDeCocoSococo) + parseInt(resumo.aguaDeCocoVerde)
+         });
+
+      /*   resumosDiariosTabelas.buscaSemanal.forEach((semana) => {
+          this.totalSemana = semana;
           });
-        } else {
+          
+
+         resumosDiariosTabelas.resumoMensal.forEach((mensal) => {
+          this.totalMes = mensal;
+          });*/
+
+        } 
+     /*   else {
           this.dataRows = [];
           this.totalcriflococo = 0;
           this.rendimento = 0;
           this.totalAguaDeCoco = 0;
-          const resumo = new ResumoDiario(event, null, null, null, null, null, null, null, null, null, null, null, null, null);
-          this.dataRows.push(resumo)
-        }
-      });
+        
+         }*/
+       });
   }
 
   private getResumoDiario(): void {

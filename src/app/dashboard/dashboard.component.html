@@ -1,20 +1,18 @@
-<div class="container mt-5 mb-0">
+<div class="main-content">
+    <div class="container-fluid">
 
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <button type="button" class="btn btn-primary" (click)="selecionarDia()">DIA</button>
             <button type="button" class="btn btn-secondary" (click)="selecionarMes()">MÊS</button>
         </div>
-    </div>
-</div>
-<div class="main-content" *ngIf="mes">
-    <div class="container-fluid">
-        <app-dashboard-mes></app-dashboard-mes>
-    </div>
-</div>
+        <!-- <a  [routerLink]="/resumo-diario"><button mat-flat-button color="primary">Cadastrar Resumo do Dia</button></a> -->
 
-<div class="main-content" *ngIf="dia">
-    <div class="container-fluid">
-        <app-dashboard-dia></app-dashboard-dia>
+        <div *ngIf="mes">
+            <app-dashboard-mes></app-dashboard-mes>
+        </div>
+
+        <div *ngIf="dia">
+            <app-dashboard-dia></app-dashboard-dia>
+        </div>
     </div>
 </div>

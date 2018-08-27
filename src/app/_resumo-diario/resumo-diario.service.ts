@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
-import { Lancamento, ResumoDiario } from './resumo-diario.model';
+import { Lancamento, ResumoDiario, TabelaResumosDiarios } from './resumo-diario.model';
 import { ErrorHandler } from '../errorHandler';
 
 
@@ -43,15 +43,15 @@ export class ResumoDiarioService {
       })
   }
 
-  public buscarPorData(filter: Filtro): Observable<ResumoDiario[]> {
+  public buscarPorData(filter: Filtro): Observable<any[]> {
     const params = new URLSearchParams();
 
     if (filter.dataLancamento) {
         params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
     }
 
-    return this.http.get(`${this.resumoUrl}/busca-por-data`, {search: params})
-        .map((resposta: Response) => resposta.json())
+    return this.http.get(`${this.resumoUrl}/resumo-diario`, {search: params})
+        .map((resposta) => resposta.json())
         .catch(ErrorHandler.handlerError);
   }
 
