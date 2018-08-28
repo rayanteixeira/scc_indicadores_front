@@ -43,7 +43,7 @@ export class ResumoDiarioService {
       })
   }
 
-  public buscarPorData(filter: Filtro): Observable<any[]> {
+  public buscarPorData(filter: Filtro): Observable<TabelaResumosDiarios> {
     const params = new URLSearchParams();
 
     if (filter.dataLancamento) {

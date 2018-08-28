@@ -107,15 +107,11 @@ export class ResumoDiario {
 export class TabelaResumosDiarios {
 
     public resumosDiarios?: ResumoDiario[];
-    public resumoMensal?: any[];
+    public resumosMensal?: ResumoDiario[];
     public buscaSemanal?: any [];
     constructor(
         resumosDiarios: ResumoDiario[],
-        resumoMensal?: any[],
+        resumosMensal?: ResumoDiario[],
         buscaSemanal?: any[]
-    ){
-     this.resumosDiarios = resumosDiarios ? resumosDiarios: [] ;
-     this.resumoMensal = resumoMensal ? resumoMensal: null ;
-     this.buscaSemanal = buscaSemanal ? buscaSemanal: null ;
-    }
+    ) {}
 }

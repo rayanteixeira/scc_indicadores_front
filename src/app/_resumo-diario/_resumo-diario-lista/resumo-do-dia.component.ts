@@ -20,10 +20,11 @@ export class ResumoDoDiaComponent implements OnInit {
   filtro: Filtro = new Filtro();
 
   headerRow: String[];
-  dataRows = [];
   resumoDiario: ResumoDiario;
+  dataRows = [];
   totalSemana = [];
-  totalMes = [];
+  totalDia: ResumoDiario = new ResumoDiario();
+  totalMes: ResumoDiario = new ResumoDiario();
   rendimento: any;
   totalcriflococo: number;
   totalAguaDeCoco: number;
@@ -37,46 +38,28 @@ export class ResumoDoDiaComponent implements OnInit {
 
   ngOnInit() {
     this.listaHeaderRow();
-  //  this.getResumoDiario();
+    //  this.getResumoDiario();
   }
 
   public buscaPorData(event) {
 
-    this.dataRows = [];
-    this.totalMes = [];
-    this.totalSemana = [] ;
+    // this.dataRows = [];
+    // this.totalMes = [];
+    this.totalSemana = [];
 
     this.filtro.dataLancamento = event
     this.sococoService.buscarPorData(this.filtro)
-      .subscribe((resumosDiariosTabelas) => { 
-         console.log(resumosDiariosTabelas)     
-        if (resumosDiariosTabelas) {          
-          //TOTAL DE CRI & FLOCOCO // TOTAL DE RENDIMENTO
-          resumosDiariosTabelas.forEach(resumo => {
-            this.dataRows.push(resumo);
-            this.totalcriflococo = parseInt(resumo.cri) + parseInt(resumo.flococo);
-            this.rendimento = (this.totalcriflococo / parseInt(resumo.cocosProcessados)).toFixed(3);
-            this.totalAguaDeCoco = parseInt(resumo.aguaDeCocoSococo) + parseInt(resumo.aguaDeCocoVerde)
-         });
+      .subscribe((resumos: TabelaResumosDiarios) => {
+        console.log(resumos);
 
-      /*   resumosDiariosTabelas.buscaSemanal.forEach((semana) => {
-          this.totalSemana = semana;
-          });
-          
+        resumos.buscaSemanal[0].forEach(semana => {
+          this.totalSemana.push(semana)
+        })
 
-         resumosDiariosTabelas.resumoMensal.forEach((mensal) => {
-          this.totalMes = mensal;
-          });*/
+        this.totalDia = resumos.resumosDiarios[0];
+        this.totalMes = resumos.resumosMensal[0];
 
-        } 
-     /*   else {
-          this.dataRows = [];
-          this.totalcriflococo = 0;
-          this.rendimento = 0;
-          this.totalAguaDeCoco = 0;
-        
-         }*/
-       });
+      });
   }
 
   private getResumoDiario(): void {
