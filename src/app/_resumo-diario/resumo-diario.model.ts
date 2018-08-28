@@ -99,7 +99,22 @@ export class ResumoDiario {
         public totalDeCacambas?: string,
         public numeroDeFardos?: string,
 
-    ) { }
+    ) { 
+        this.cocosProcessados = '0';
+        this.cocosDesfibrados = '0';
+        this.cocosProcessados = '0';
+        this.cri = '0';
+        this.flococo = '0';
+        this.oleoIndustrialETE = '0';
+        this.oleoIndustrialTipoA = '0';
+        this.torta = '0';
+        this.aguaDeCocoSococo = '0';
+        this.aguaDeCocoVerde = '0';
+        this.porcentagemCocoGerminado = '0';
+        this.caixaPadrao = '0';
+        this.totalDeCacambas = '0';
+        this.numeroDeFardos = '0';
+    }
 
 }
 

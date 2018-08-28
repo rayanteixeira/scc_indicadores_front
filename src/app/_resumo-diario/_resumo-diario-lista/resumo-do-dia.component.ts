@@ -25,9 +25,15 @@ export class ResumoDoDiaComponent implements OnInit {
   totalSemana = [];
   totalDia: ResumoDiario = new ResumoDiario();
   totalMes: ResumoDiario = new ResumoDiario();
-  rendimento: any;
-  totalcriflococo: number;
-  totalAguaDeCoco: number;
+  rendimento: any = 0;
+  rendimentoMes: any = 0;
+  rendimentoSemana: any = 0;
+  totalcriflococo: number = 0;
+  totalcriflococoMes: number = 0;
+  totalcriflococoSemana: number = 0;
+  totalAguaDeCoco: number = 0;
+  totalAguaDeCocoMes: number = 0;
+  totalAguaDeCocoSemana: number = 0;
 
   tabela: TabelaResumosDiarios[];
 
@@ -52,13 +58,45 @@ export class ResumoDoDiaComponent implements OnInit {
       .subscribe((resumos: TabelaResumosDiarios) => {
         console.log(resumos);
 
+        if(resumos){
         resumos.buscaSemanal[0].forEach(semana => {
           this.totalSemana.push(semana)
+         // this.totalSemanaMes.push(semana);
         })
 
         this.totalDia = resumos.resumosDiarios[0];
         this.totalMes = resumos.resumosMensal[0];
 
+
+        if(this.totalDia ) { // FALTA VALIDAR QUANDO A SEMANA VIER VAZIA...E ZERAR TODOS OS INDICADORES
+
+          this.totalcriflococo = parseInt(this.totalDia.cri) + parseInt(this.totalDia.flococo);
+          this.totalcriflococoMes = parseInt(this.totalMes.cri) + parseInt(this.totalMes.flococo);
+          this.totalcriflococoSemana = parseInt(this.totalSemana[2]) + parseInt(this.totalSemana[3]);
+          console.log(this.totalcriflococoSemana);
+         
+  
+          this.rendimento = (this.totalcriflococo / parseInt(this.totalDia.cocosProcessados)).toFixed(3);
+          this.rendimentoMes = (this.totalcriflococoMes / parseInt(this.totalMes.cocosProcessados)).toFixed(3);
+          this.rendimentoSemana = (this.totalcriflococoSemana / parseInt(this.totalSemana[0])).toFixed(3);
+          console.log(this.rendimentoSemana);
+          
+          this.totalAguaDeCoco = parseInt(this.totalDia.aguaDeCocoSococo) + parseInt(this.totalDia.aguaDeCocoVerde)
+          this.totalAguaDeCocoMes = parseInt(this.totalMes.aguaDeCocoSococo) + parseInt(this.totalMes.aguaDeCocoVerde)
+          this.totalAguaDeCocoSemana = parseInt(this.totalSemana[7]) + parseInt(this.totalSemana[8])
+          console.log(this.totalAguaDeCocoSemana);
+  
+        } else {
+          this.totalcriflococo = 0;
+          this.rendimento = 0;
+          this.totalAguaDeCoco = 0;
+        }
+
+      } else {
+        this.totalDia = new ResumoDiario();
+        this.totalMes = new ResumoDiario();
+        this.totalSemana = []
+      }
       });
   }
 
@@ -90,7 +128,7 @@ export class ResumoDoDiaComponent implements OnInit {
   }
 
   public listaHeaderRow(): void {
-    this.headerRow = ['1º Turno', '2º Turno', 'Total Dia', 'Total Semana', 'Total Mês'];
+    this.headerRow = ['Total Dia', 'Total Semana', 'Total Mês'];
   }
 
 }
