@@ -74,7 +74,7 @@ export class ResumoDiarioService {
 
   }
 
-  public getResumoDiario(): Observable<ResumoDiario[]> {
+  public getResumoDiario(): Observable<TabelaResumosDiarios> {
     return this.http.get(`${this.resumoUrl}/resumo-do-dia`)
         .map((resposta: Response) => resposta.json())
         .catch(ErrorHandler.handlerError);
