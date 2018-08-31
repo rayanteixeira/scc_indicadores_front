@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
-import { Lancamento, ResumoDiario, TabelaResumosDiarios } from './resumo-diario.model';
+import { Lancamento, TabelaResumosDiarios } from './resumo-diario.model';
 import { ErrorHandler } from '../errorHandler';
 
 
@@ -47,12 +47,12 @@ export class ResumoDiarioService {
     const params = new URLSearchParams();
 
     if (filter.dataLancamento) {
-        params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
+      params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
     }
 
-    return this.http.get(`${this.resumoUrl}/resumo-diario`, {search: params})
-        .map((resposta) => resposta.json())
-        .catch(ErrorHandler.handlerError);
+    return this.http.get(`${this.resumoUrl}/resumo-diario`, { search: params })
+      .map((resposta) => resposta.json())
+      .catch(ErrorHandler.handlerError);
   }
 
   public pesquisar(filtro: Filtro): Promise<Lancamento[]> {
@@ -76,8 +76,21 @@ export class ResumoDiarioService {
 
   public getResumoDiario(): Observable<TabelaResumosDiarios> {
     return this.http.get(`${this.resumoUrl}/resumo-do-dia`)
-        .map((resposta: Response) => resposta.json())
-        .catch(ErrorHandler.handlerError);
+      .map((resposta: Response) => resposta.json())
+      .catch(ErrorHandler.handlerError);
+  }
+
+  // Classe User-profile
+  public destinatario(): Observable<any> {
+    return this.http.get(`${this.resumoUrl}/destinatario`)
+      .map((resposta: Response) => resposta.json())
+      .catch(ErrorHandler.handlerError);
+  }
+
+  public removeDestinatario(element): Observable<any> {
+    return this.http.delete(`${this.resumoUrl}/destinatario/${element.id}`);
+  }
+
 }
-}
+
 

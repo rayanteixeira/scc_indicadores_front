@@ -1,25 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ResumoDiarioService } from '../_resumo-diario/resumo-diario.service';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, } from '@angular/material';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface Destinatario {
+  id: number;
+  nome: string;
+  email: string;
+  destinatario: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
 
 @Component({
   selector: 'app-user-profile',
@@ -27,13 +15,56 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource : any;
 
-  constructor() { }
+  displayedColumns: string[];
+  dataSource: Destinatario[] = [];
+
+  constructor(
+    private sococoService: ResumoDiarioService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
-    this.dataSource =  ELEMENT_DATA;
+    this.destinatario();
+    this.displayedColumns = ['nome', 'email', 'acao'];
   }
 
+  public destinatario() {
+    this.sococoService.destinatario()
+      .subscribe((usuario) => {
+        this.dataSource = usuario;
+      })
+  };
+
+  openDialog(element): void {
+    const dialogRef = this.dialog.open(RemoveDialog,{
+      //width: '250px',
+      data: element
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == true) {
+        console.log(`Dialog result: ${result}` + ' ' + element.nome);
+        this.sococoService.removeDestinatario(element)
+        .subscribe((usuario) => {
+          this.dataSource = usuario;
+          this.destinatario();
+        })
+      }
+     
+    });
+  }
+}
+
+@Component({
+  selector: 'remove-dialog',
+  templateUrl: './remove-dialog.html',
+})
+export class RemoveDialog { 
+  constructor(
+    public dialogRef: MatDialogRef<RemoveDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: Destinatario){
+
+  }
 }
