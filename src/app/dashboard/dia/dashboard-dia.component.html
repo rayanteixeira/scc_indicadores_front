@@ -56,7 +56,14 @@
   </div>
 </div>
 
-<div class="row">
+<div class="col-md-12">
+  <p-calendar [showIcon]="true" [locale]="pt" dateFormat="mm/yy" name="dataLancamento" [inputStyle]="{ width: '300px'}"
+    [(ngModel)]="data.dataLancamento" view="months" [yearNavigator]="true" yearRange="2010:2250" (onSelect)="pesquisar($event)">
+  </p-calendar>
+  <span style="margin-left:35px" pTooltip="Pesquisar"></span>
+</div>
+
+<!-- <div class="row">
   <div class="col-md-12 selectDate">
     <select class="col-md-1 selectYear">
       <option>Dia</option>
@@ -72,7 +79,9 @@
     </select>
 
   </div>
-</div>
+
+
+</div> -->
 
 <!-- SOCOCO -->
 <div class="card">

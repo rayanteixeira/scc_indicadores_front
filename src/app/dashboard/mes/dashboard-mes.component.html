@@ -1,283 +1,288 @@
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
-                        </div>
-                        <p class="card-category">C.R.I & Flococo</p>
-                        <h3 class="card-title"> 41.055
-                            <small>KG</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i>
-                            22/04/2018
-                        </div>
-                    </div>
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <p class="card-category">C.R.I & Flococo</p>
+                <h3 class="card-title"> 41.055
+                    <small>KG</small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i>
+                    22/04/2018
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">store</i>
-                        </div>
-                        <p class="card-category">Água de Coco</p>
-                        <h3 class="card-title">93.213
-                            <small>L</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> 22/04/2018
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
-                        </div>
-                        <p class="card-category">Fardos</p>
-                        <h3 class="card-title">75
-                            <small>UND</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> 22/04/2018
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12 selectDate">
-            <select class="col-md-1 selectYear" >
-                <option>Dia</option>
-                <option *ngFor="let dia of days">{{dia}}</option>
-            </select>
-            <select class="col-md-1" >
-                <option>Mês</option>
-                <option *ngFor="let mes of months">{{mes}}</option>
-            </select>
-            <select class="col-md-1" >
-                <option>Ano</option>
-                <option *ngFor="let ano of years">{{ano}}</option>
-            </select>
-
         </div>
     </div>
-
-        <!-- SOCOCO -->
-        <div class="card">
-            <div class="card-header card-header-tabs card-header-danger">
-                <h3 class="card-title">SOCOCO</h3>
-                <p class="card-category">
-                    <strong>Produção de 12/10/2018</strong>
-                </p>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Água de Coco</p>
+                <h3 class="card-title">93.213
+                    <small>L</small>
+                </h3>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
-                                <h4 class="card-title"> Produção Diária</h4>
-                                <p class="card-category">12/10/2018</p>
-                            </div> -->
-                            <div class="card-body">
-                                <div id="cocoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Cocos Desfibrados (und)
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-2"></i> Cocos Processados (und)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> 22/04/2018
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                </div>
+                <p class="card-category">Fardos</p>
+                <h3 class="card-title">75
+                    <small>UND</small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">date_range</i> 22/04/2018
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
+<div class="row">
+    <!-- <div class="col-md-12 selectDate">
+        <select class="col-md-1 selectYear">
+            <option>Dia</option>
+            <option *ngFor="let dia of days">{{dia}}</option>
+        </select>
+        <select class="col-md-1">
+            <option>Mês</option>
+            <option *ngFor="let mes of months">{{mes}}</option>
+        </select>
+        <select class="col-md-1">
+            <option>Ano</option>
+            <option *ngFor="let ano of years">{{ano}}</option>
+        </select>
+    </div> -->
+    <div class="col-md-12">
+        <p-calendar styleClass="cal" [showIcon]="true" [locale]="pt" dateFormat="yy" name="dataLancamento" 
+             [inputStyle]="{ width: '300px'}" [(ngModel)]="data.dataLancamento" view="false" [yearNavigator]="true" yearRange="2010:2250"
+             (onSelect)="pesquisar($event)">
+        </p-calendar>
+        <span style="margin-left:35px" pTooltip="Pesquisar"></span>
+    </div>
+</div>
+
+<!-- SOCOCO -->
+<div class="card">
+    <div class="card-header card-header-tabs card-header-danger">
+        <h3 class="card-title">SOCOCO</h3>
+        <p class="card-category">
+            <strong>Produção de 12/10/2018</strong>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
                                 <h4 class="card-title"> Produção Diária</h4>
                                 <p class="card-category">12/10/2018</p>
                             </div> -->
-                            <div class="card-body">
-                                <div id="criFlococoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> CRI (Kg)
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-2"></i> Flococo (Kg)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="cocoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Cocos Desfibrados (und)
+                            <br/>
+                            <i class="fa fa-circle legend-text-2"></i> Cocos Processados (und)
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
                                 <h4 class="card-title"> Produção Diária</h4>
                                 <p class="card-category">12/10/2018</p>
                             </div> -->
-                            <div class="card-body">
-                                <div id="oleoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Óleo Industrial Tipo A (L)
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-2"></i> Óleo Industrial E.T.E (L)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="criFlococoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> CRI (Kg)
+                            <br/>
+                            <i class="fa fa-circle legend-text-2"></i> Flococo (Kg)
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
+                                <h4 class="card-title"> Produção Diária</h4>
+                                <p class="card-category">12/10/2018</p>
+                            </div> -->
+                    <div class="card-body">
+                        <div id="oleoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Óleo Industrial Tipo A (L)
+                            <br/>
+                            <i class="fa fa-circle legend-text-2"></i> Óleo Industrial E.T.E (L)
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-warning">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-warning">
                                 <h4 class="card-title">Employees Stats</h4>
                                 <p class="card-category">New employees on 15th September, 2016</p>
                             </div> -->
-                            <div class="card-body">
-                                <div id="tortaChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-1"></i> Torta(Ração) (Kg)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="tortaChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <br/>
+                            <i class="fa fa-circle legend-text-1"></i> Torta(Ração) (Kg)
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- ACQUA -->
-        <div class="card">
-            <div class="card-header card-header-tabs card-header-success">
-                <h3 class="card-title">ACQUA</h3>
-                <p class="card-category">
-                    <strong>Produção de 12/10/2018</strong>
-                </p>
-            </div>
+<!-- ACQUA -->
+<div class="card">
+    <div class="card-header card-header-tabs card-header-success">
+        <h3 class="card-title">ACQUA</h3>
+        <p class="card-category">
+            <strong>Produção de 12/10/2018</strong>
+        </p>
+    </div>
 
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
                             <h4 class="card-title"> Produção Diária</h4>
                             <p class="card-category">12/10/2018</p>
                         </div> -->
-                            <div class="card-body">
-                                <div id="aguaCocoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Água de Coco Sococo (L)
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-2"></i> Água de Coco Verde (L)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="aguaCocoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Água de Coco Sococo (L)
+                            <br/>
+                            <i class="fa fa-circle legend-text-2"></i> Água de Coco Verde (L)
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-warning">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-warning">
                             <h4 class="card-title">Employees Stats</h4>
                             <p class="card-category">New employees on 15th September, 2016</p>
                         </div> -->
-                            <div class="card-body">
-                                <div id="caixaPadraoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <br/>
-                                    <i class="fa fa-circle legend-text-1"></i> Caixa Padrão (und)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="caixaPadraoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <br/>
+                            <i class="fa fa-circle legend-text-1"></i> Caixa Padrão (und)
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
                             <h4 class="card-title"> Produção Diária</h4>
                             <p class="card-category">12/10/2018</p>
                         </div> -->
-                            <div class="card-body">
-                                <div id="cocoGerminadoChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Coco Germinado (%)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="cocoGerminadoChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Coco Germinado (%)
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-warning">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-warning">
                             <h4 class="card-title">Employees Stats</h4>
                             <p class="card-category">New employees on 15th September, 2016</p>
                         </div> -->
-                            <div class="card-body">
-                                <div id="totalCacambaChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Total de Caçambas (coco verde)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="totalCacambaChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Total de Caçambas (coco verde)
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-        <!-- AMAFIBRA -->
-        <div class="card">
-            <div class="card-header card-header-tabs card-header-warning">
-                <h3 class="card-title">AMAFIBRA</h3>
-                <p class="card-category">
-                    <strong>Produção de 12/10/2018</strong>
-                </p>
-            </div>
+<!-- AMAFIBRA -->
+<div class="card">
+    <div class="card-header card-header-tabs card-header-warning">
+        <h3 class="card-title">AMAFIBRA</h3>
+        <p class="card-category">
+            <strong>Produção de 12/10/2018</strong>
+        </p>
+    </div>
 
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card">
-                            <!-- <div class="card-header card-header-tabs card-header-primary">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <!-- <div class="card-header card-header-tabs card-header-primary">
                             <h4 class="card-title"> Produção Diária</h4>
                             <p class="card-category">12/10/2018</p>
                         </div> -->
-                            <div class="card-body">
-                                <div id="totalFardosChart" [style.width.%]="100" [style.height.px]="300"></div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="chart-legend">
-                                    <i class="fa fa-circle legend-text-1"></i> Número de Fardos (L)
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div id="totalFardosChart" [style.width.%]="100" [style.height.px]="300"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="chart-legend">
+                            <i class="fa fa-circle legend-text-1"></i> Número de Fardos (L)
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>

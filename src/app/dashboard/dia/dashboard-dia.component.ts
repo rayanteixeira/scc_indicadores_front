@@ -12,10 +12,8 @@ export class DashboardDiaComponent implements OnInit {
   private chart: AmChart;
 
   data = new DashboardFilter();
-  dataProvider = []
-  years = [];
-  months = [];
-  days = [];
+  dataProvider = [];
+  pt: any;
 
   constructor(
     private dashboardService: DashboardService,
@@ -24,13 +22,33 @@ export class DashboardDiaComponent implements OnInit {
 
   ngOnInit() {
     this.service();
-    this.years = [2012, 2013, 2014, 2015, 2017, 2018]
-    this.months = ['jan', 'fev', 'mar', 'abr', 'mai']
-    this.days = [11, 12, 13, 14, 15]
+    this.carregarCalendar();
+  }
+
+  pesquisar(event) {
+    console.log(event);
+    this.service();
+  }
+
+  private carregarCalendar() {
+    this.pt = {
+      firstDayOfWeek: 0,
+      dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+      dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+      dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+      monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      today: 'Hoje',
+      clear: 'Limpar'
+    };
+
   }
 
   private service() {
-    this.data.dataLancamento = new Date('2018-05-02')
+    // this.data.dataLancamento = new Date('2018-05-02')
+
+    this.data.dataLancamento = (this.data.dataLancamento) ? this.data.dataLancamento : new Date('2018-05-02');
 
     this.dashboardService.buscarPorDia(this.data)
       .then(resp => {

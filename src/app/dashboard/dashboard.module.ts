@@ -5,13 +5,18 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardMesComponent } from './mes/dashboard-mes.component';
 import { DashboardDiaComponent } from './dia/dashboard-dia.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+
+import { CalendarModule } from 'primeng/primeng';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     DashboardRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    CalendarModule
   ],
   declarations: [DashboardComponent, DashboardMesComponent, DashboardDiaComponent
   ]

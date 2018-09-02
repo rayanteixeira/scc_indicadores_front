@@ -21,6 +21,8 @@
       "styles": [
           "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
           "./assets/scss/material-dashboard.scss",
+          "../node_modules/primeng/resources/primeng.min.css",
+          "../node_modules/primeng/resources/themes/omega/theme.css",
           "./assets/css/demo.css"
       ],
       "scripts": [
