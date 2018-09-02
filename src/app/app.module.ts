@@ -23,7 +23,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     RouterModule,
     AppRoutingModule,
     DashboardModule
-
   ],
   declarations: [
     AppComponent,
