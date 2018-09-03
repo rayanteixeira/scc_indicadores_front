@@ -51,12 +51,10 @@ export class ResumoDiarioComponent implements OnInit {
   }
 
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
-    console.log(formulario);
     this.loader = true;
     this.resumoService.adicionar(formulario)
       .subscribe(response => {
         console.log(response);
-
         formDirective.resetForm();
         this.formulario.reset();
         this.loader = false;

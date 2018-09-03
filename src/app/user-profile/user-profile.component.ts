@@ -1,12 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ResumoDiarioService } from '../_resumo-diario/resumo-diario.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, } from '@angular/material';
+import { Validators, FormControl, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 
 export interface Destinatario {
   id: number;
   nome: string;
   email: string;
-  destinatario: string;
+  //  destinatario: string;
 }
 
 @Component({
@@ -16,43 +17,63 @@ export interface Destinatario {
 })
 export class UserProfileComponent implements OnInit {
 
+  formulario: FormGroup;
   displayedColumns: string[];
   dataSource: Destinatario[] = [];
 
   constructor(
     private sococoService: ResumoDiarioService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.destinatario();
-    this.displayedColumns = ['nome', 'email', 'acao'];
+    this.destinatarios();
+    this.displayedColumns = ['nome', 'email', 'excluir'];
+    this.form();
   }
 
-  public destinatario() {
+
+
+  form() {
+    this.formulario = this.fb.group({
+      'nome': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.email)
+    })
+  }
+
+  destinatarios() {
     this.sococoService.destinatario()
-      .subscribe((usuario) => {
-        this.dataSource = usuario;
+      .subscribe((destinatario) => {
+        this.dataSource = destinatario;
       })
   };
 
-  openDialog(element): void {
-    const dialogRef = this.dialog.open(RemoveDialog,{
-      //width: '250px',
+  adicionarDestinatario(formulario: FormGroup, formDirective: FormGroupDirective) {
+    this.sococoService.salvarDestinatario(formulario)
+      .subscribe((destinatario) => {
+        this.dataSource.push(destinatario);
+        formDirective.resetForm();
+        this.formulario.reset();
+        this.destinatarios();
+      });
+  }
+
+  modalExcluir(element): void {
+    const dialogRef = this.dialog.open(RemoveDialog, {
       data: element
     });
 
-
     dialogRef.afterClosed().subscribe(result => {
-      if(result == true) {
-        console.log(`Dialog result: ${result}` + ' ' + element.nome);
+      if (result == true) {
         this.sococoService.removeDestinatario(element)
-        .subscribe((usuario) => {
-          this.dataSource = usuario;
-          this.destinatario();
-        })
+          .subscribe((resp) => {
+            if(resp.status == 200){
+              this.dataSource = this.dataSource.filter(e => e !== element);
+              this.destinatarios();
+            }
+          })
       }
-     
     });
   }
 }
@@ -61,10 +82,10 @@ export class UserProfileComponent implements OnInit {
   selector: 'remove-dialog',
   templateUrl: './remove-dialog.html',
 })
-export class RemoveDialog { 
+export class RemoveDialog {
   constructor(
     public dialogRef: MatDialogRef<RemoveDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Destinatario){
+    @Inject(MAT_DIALOG_DATA) public data: Destinatario) {
 
   }
 }

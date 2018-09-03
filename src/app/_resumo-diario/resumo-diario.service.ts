@@ -34,7 +34,7 @@ export class ResumoDiarioService {
       resumoDiario);
   }
 
-  public listar(): Promise<any> {
+  listar(): Promise<any> {
     return this.http.get(`${this.resumoUrl}/lista-resumo`)
       .toPromise()
       .then(response => response.json())
@@ -43,7 +43,7 @@ export class ResumoDiarioService {
       })
   }
 
-  public buscarPorData(filter: Filtro): Observable<TabelaResumosDiarios> {
+  buscarPorData(filter: Filtro): Observable<TabelaResumosDiarios> {
     const params = new URLSearchParams();
 
     if (filter.dataLancamento) {
@@ -55,7 +55,8 @@ export class ResumoDiarioService {
       .catch(ErrorHandler.handlerError);
   }
 
-  public pesquisar(filtro: Filtro): Promise<Lancamento[]> {
+ 
+  pesquisar(filtro: Filtro): Promise<Lancamento[]> {
 
     const params = new URLSearchParams();
 
@@ -64,7 +65,7 @@ export class ResumoDiarioService {
         moment(filtro.dataLancamento).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.resumoUrl}/busca-por-data`,
+    return this.http.get(`${this.resumoUrl}/busca-por-ano-mes`,
       { search: params })
       .toPromise()
       .then(response => {
@@ -74,23 +75,31 @@ export class ResumoDiarioService {
 
   }
 
-  public getResumoDiario(): Observable<TabelaResumosDiarios> {
+  getResumoDiario(): Observable<TabelaResumosDiarios> {
     return this.http.get(`${this.resumoUrl}/resumo-do-dia`)
       .map((resposta: Response) => resposta.json())
       .catch(ErrorHandler.handlerError);
   }
 
   // Classe User-profile
-  public destinatario(): Observable<any> {
+  destinatario(): Observable<any> {
     return this.http.get(`${this.resumoUrl}/destinatario`)
       .map((resposta: Response) => resposta.json())
       .catch(ErrorHandler.handlerError);
   }
 
-  public removeDestinatario(element): Observable<any> {
+  removeDestinatario(element): Observable<any> {
     return this.http.delete(`${this.resumoUrl}/destinatario/${element.id}`);
   }
-
+  
+  salvarDestinatario(destinatario): Observable<any> {
+    return this.http.post(
+      `${this.resumoUrl}/destinatario`, destinatario)
+      .map((resposta: Response ) => resposta.json())
+      .catch(ErrorHandler.handlerError);
+  }
+  
+ 
 }
 
 

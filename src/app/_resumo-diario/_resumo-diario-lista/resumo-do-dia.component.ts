@@ -44,7 +44,7 @@ export class ResumoDoDiaComponent implements OnInit {
 
 
   constructor(
-    private sococoService: ResumoDiarioService
+    private resumoService: ResumoDiarioService
   ) { }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class ResumoDoDiaComponent implements OnInit {
     this.totalSemana = []
 
     this.filtro.dataLancamento = event
-    this.sococoService.buscarPorData(this.filtro)
+    this.resumoService.buscarPorData(this.filtro)
       .subscribe((resumos: TabelaResumosDiarios) => {
         console.log(resumos);
 
@@ -123,7 +123,7 @@ export class ResumoDoDiaComponent implements OnInit {
   }
 
   private resumoDoDia(): void {
-    this.sococoService.getResumoDiario()
+    this.resumoService.getResumoDiario()
     .subscribe((resumos: TabelaResumosDiarios) => {
       console.log(resumos);
 

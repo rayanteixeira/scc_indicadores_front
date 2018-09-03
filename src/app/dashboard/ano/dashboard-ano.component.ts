@@ -3,12 +3,11 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { DashboardService, DashboardFilter } from '../dashboard.service';
 
 @Component({
-  selector: 'app-dashboard-dia',
-  templateUrl: './dashboard-dia.component.html',
-  styleUrls: ['./dashboard-dia.component.scss']
+  selector: 'app-dashboard-ano',
+  templateUrl: './dashboard-ano.component.html',
+  styleUrls: ['./dashboard-ano.component.css']
 })
-export class DashboardDiaComponent implements OnInit {
-
+export class DashboardAnoComponent implements OnInit {
   private chart: AmChart;
 
   data = new DashboardFilter();
@@ -32,7 +31,7 @@ export class DashboardDiaComponent implements OnInit {
   private service() {
     this.data.dataLancamento = new Date('2018-05-02')
 
-    this.dashboardService.buscarPorDia(this.data)
+    this.dashboardService.buscarPorMes(this.data)
       .then(resp => {
         console.log(resp);
 
@@ -58,7 +57,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'id': 'idGraphs',
@@ -80,7 +79,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>CRI: [[value]]</span></b>',
@@ -101,7 +100,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Tipo A: [[value]]</span></b>',
@@ -122,7 +121,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Torta: [[value]]</span></b>',
@@ -139,7 +138,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Água C. Sococo: [[value]]</span></b>',
@@ -160,7 +159,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>% C. Germinado: [[value]]</span></b>',
@@ -176,7 +175,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caçambas: [[value]]</span></b>',
@@ -192,7 +191,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caixa Padrão: [[value]]</span></b>',
@@ -209,7 +208,7 @@ export class DashboardDiaComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'diaLancamento',
+      'categoryField': 'mesLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Fardos: [[value]]</span></b>',

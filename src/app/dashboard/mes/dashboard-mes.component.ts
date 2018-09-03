@@ -5,9 +5,10 @@ import { DashboardService, DashboardFilter } from '../dashboard.service';
 @Component({
   selector: 'app-dashboard-mes',
   templateUrl: './dashboard-mes.component.html',
-  styleUrls: ['./dashboard-mes.component.css']
+  styleUrls: ['./dashboard-mes.component.scss']
 })
 export class DashboardMesComponent implements OnInit {
+
   private chart: AmChart;
 
   data = new DashboardFilter();
@@ -33,8 +34,6 @@ export class DashboardMesComponent implements OnInit {
 
     this.dashboardService.buscarPorMes(this.data)
       .then(resp => {
-        console.log(resp);
-
         resp.forEach(entidade => {
           this.chart = this.AmCharts.makeChart('cocoChart', this.cocoChartOptions(entidade.cocos));
           this.chart = this.AmCharts.makeChart('criFlococoChart', this.criFlococoChartOptions(entidade.criFlococos));
@@ -57,7 +56,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'id': 'idGraphs',
@@ -79,7 +78,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>CRI: [[value]]</span></b>',
@@ -100,7 +99,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Tipo A: [[value]]</span></b>',
@@ -121,7 +120,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Torta: [[value]]</span></b>',
@@ -138,7 +137,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Água C. Sococo: [[value]]</span></b>',
@@ -159,7 +158,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>% C. Germinado: [[value]]</span></b>',
@@ -175,7 +174,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caçambas: [[value]]</span></b>',
@@ -191,7 +190,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caixa Padrão: [[value]]</span></b>',
@@ -208,7 +207,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Fardos: [[value]]</span></b>',

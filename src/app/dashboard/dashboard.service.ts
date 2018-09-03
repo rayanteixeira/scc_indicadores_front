@@ -13,7 +13,7 @@ export class DashboardService {
 
     constructor(private http: Http) { }
 
-    public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
+    public buscarPorAno(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
 
         if (filter.dataLancamento) {
@@ -25,13 +25,12 @@ export class DashboardService {
             .toPromise()
             .then(resposta => {
                 const lancamento = resposta.json();
-                console.log(lancamento);
                 return lancamento;
             }
             );
     }
 
-    public buscarPorDia(filter: DashboardFilter): Promise<any[]> {
+    public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
 
         if (filter.dataLancamento) {
@@ -43,10 +42,10 @@ export class DashboardService {
             .toPromise()
             .then(resposta => {
                 const lancamento = resposta.json();
-                console.log(lancamento);
                 return lancamento;
             }
             );
     }
+
 
 }
