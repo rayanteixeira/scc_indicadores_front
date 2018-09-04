@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ResumoDiarioService, Filtro } from '../resumo-diario.service';
 import { ResumoDiario, TabelaResumosDiarios } from '../resumo-diario.model';
-import { MAY } from '@angular/material';
-import { empty } from 'rxjs/Observer';
+import * as moment from 'moment'
 
 
 @Component({
@@ -42,14 +41,16 @@ export class ResumoDoDiaComponent implements OnInit {
 
   tabela: TabelaResumosDiarios[];
 
+  dataAtual: any = moment().format('YYYY-MM-DD')
+ 
 
   constructor(
-    private sococoService: ResumoDiarioService
-  ) { }
+    private resumoService: ResumoDiarioService
+  ) {}
 
   ngOnInit() {
     this.cabecalhoLista();
-   // this.resumoDoDia();
+    this.resumoDoDia();
   }
 
   public buscaPorData(event) {
@@ -59,7 +60,7 @@ export class ResumoDoDiaComponent implements OnInit {
     this.totalSemana = []
 
     this.filtro.dataLancamento = event
-    this.sococoService.buscarPorData(this.filtro)
+    this.resumoService.buscarPorData(this.filtro)
       .subscribe((resumos: TabelaResumosDiarios) => {
         console.log(resumos);
 
@@ -76,9 +77,7 @@ export class ResumoDoDiaComponent implements OnInit {
             this.totalcriflococo = parseInt(this.totalDia.cri) + parseInt(this.totalDia.flococo);
             this.rendimento = (this.totalcriflococo / parseInt(this.totalDia.cocosProcessados)).toFixed(3);
             this.totalAguaDeCoco = parseInt(this.totalDia.aguaDeCocoSococo) + parseInt(this.totalDia.aguaDeCocoVerde);
-            console.log("TEM DIA " + JSON.stringify(this.totalDia));
           } else {
-            console.log('NAO TEM DIA ' + JSON.stringify(this.totalDia));
             this.totalcriflococo = 0;
             this.rendimento = 0;
             this.totalAguaDeCoco = 0;
@@ -89,9 +88,7 @@ export class ResumoDoDiaComponent implements OnInit {
             this.totalcriflococoSemana = parseInt(this.totalSemana[2]) + parseInt(this.totalSemana[3]);
             this.rendimentoSemana = (this.totalcriflococoSemana / parseInt(this.totalSemana[0])).toFixed(3);
             this.totalAguaDeCocoSemana = parseInt(this.totalSemana[7]) + parseInt(this.totalSemana[8]);
-            console.log("Tem SEMANA >" + JSON.stringify(this.totalSemana));
           } else {
-            console.log("NAO TEM  SEMANA >" + JSON.stringify(this.totalSemana[0]));
             this.totalcriflococoSemana = 0;
             this.rendimentoSemana = 0;
             this.totalAguaDeCocoSemana = 0;
@@ -103,9 +100,7 @@ export class ResumoDoDiaComponent implements OnInit {
             this.totalcriflococoMes = parseInt(this.totalMes.cri) + parseInt(this.totalMes.flococo);
             this.rendimentoMes = (this.totalcriflococoMes / parseInt(this.totalMes.cocosProcessados)).toFixed(3);
             this.totalAguaDeCocoMes = parseInt(this.totalMes.aguaDeCocoSococo) + parseInt(this.totalMes.aguaDeCocoVerde);
-            console.log("TEM MES " + JSON.stringify(this.totalMes));
           } else {
-            console.log("NAO TEM MES " + JSON.stringify(this.totalMes));
             this.totalcriflococoMes = 0;
             this.rendimentoMes = 0;
             this.totalAguaDeCocoMes = 0;
@@ -123,12 +118,12 @@ export class ResumoDoDiaComponent implements OnInit {
   }
 
   private resumoDoDia(): void {
-    this.sococoService.getResumoDiario()
+
+    this.filtro.dataLancamento = this.dataAtual
+    this.resumoService.buscarPorData(this.filtro)
     .subscribe((resumos: TabelaResumosDiarios) => {
-      console.log(resumos);
-
+     
       if (resumos) {
-
         resumos.buscaSemanal[0].forEach(semana => {
           this.totalSemana.push(semana);
         });
@@ -140,9 +135,7 @@ export class ResumoDoDiaComponent implements OnInit {
           this.totalcriflococo = parseInt(this.totalDia.cri) + parseInt(this.totalDia.flococo);
           this.rendimento = (this.totalcriflococo / parseInt(this.totalDia.cocosProcessados)).toFixed(3);
           this.totalAguaDeCoco = parseInt(this.totalDia.aguaDeCocoSococo) + parseInt(this.totalDia.aguaDeCocoVerde);
-          console.log("TEM DIA " + JSON.stringify(this.totalDia));
         } else {
-          console.log('NAO TEM DIA ' + JSON.stringify(this.totalDia));
           this.totalcriflococo = 0;
           this.rendimento = 0;
           this.totalAguaDeCoco = 0;
@@ -153,9 +146,7 @@ export class ResumoDoDiaComponent implements OnInit {
           this.totalcriflococoSemana = parseInt(this.totalSemana[2]) + parseInt(this.totalSemana[3]);
           this.rendimentoSemana = (this.totalcriflococoSemana / parseInt(this.totalSemana[0])).toFixed(3);
           this.totalAguaDeCocoSemana = parseInt(this.totalSemana[7]) + parseInt(this.totalSemana[8]);
-          console.log("Tem SEMANA >" + JSON.stringify(this.totalSemana));
         } else {
-          console.log("NAO TEM  SEMANA >" + JSON.stringify(this.totalSemana[0]));
           this.totalcriflococoSemana = 0;
           this.rendimentoSemana = 0;
           this.totalAguaDeCocoSemana = 0;
@@ -167,9 +158,7 @@ export class ResumoDoDiaComponent implements OnInit {
           this.totalcriflococoMes = parseInt(this.totalMes.cri) + parseInt(this.totalMes.flococo);
           this.rendimentoMes = (this.totalcriflococoMes / parseInt(this.totalMes.cocosProcessados)).toFixed(3);
           this.totalAguaDeCocoMes = parseInt(this.totalMes.aguaDeCocoSococo) + parseInt(this.totalMes.aguaDeCocoVerde);
-          console.log("TEM MES " + JSON.stringify(this.totalMes));
         } else {
-          console.log("NAO TEM MES " + JSON.stringify(this.totalMes));
           this.totalcriflococoMes = 0;
           this.rendimentoMes = 0;
           this.totalAguaDeCocoMes = 0;

@@ -1,18 +1,90 @@
 <div class="main-content">
-    <div class="container-fluid">
 
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-primary" (click)="selecionarDia()">DIA</button>
-            <button type="button" class="btn btn-secondary" (click)="selecionarMes()">MÊS</button>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <mat-form-field>
+                <mat-select placeholder="Ano" [(ngModel)]="anoSelecionado">
+                    <mat-option *ngFor="let ano of listaAnos" [value]="ano">{{ano}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-        <!-- <a  [routerLink]="/resumo-diario"><button mat-flat-button color="primary">Cadastrar Resumo do Dia</button></a> -->
-
-        <div *ngIf="mes">
-            <app-dashboard-mes></app-dashboard-mes>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <mat-form-field>
+                <mat-select placeholder="Mes" [(ngModel)]="mesSelecionado">
+                    <mat-option [value]="null">Nenhum</mat-option>
+                    <mat-option *ngFor="let mes of listaMeses" [value]="mes">{{mes}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-
-        <div *ngIf="dia">
-            <app-dashboard-dia></app-dashboard-dia>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <button type="button" class="btn btn-info" (click)="buscar()">BUSCAR</button>
         </div>
     </div>
+
+    <!-- <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">content_copy</i>
+                    </div>
+                    <p class="card-category">C.R.I & Flococo</p>
+                    <h3 class="card-title"> 41.055
+                        <small>KG</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i>
+                        22/04/2018
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Água de Coco</p>
+                    <h3 class="card-title">93.213
+                        <small>L</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i> 22/04/2018
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Fardos</p>
+                    <h3 class="card-title">75
+                        <small>UND</small>
+                    </h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i> 22/04/2018
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div *ngIf="mostrarGraficosAno">
+        <app-dashboard-ano [anoRecebido]="anoSelecionado" ></app-dashboard-ano>
+    </div>
+
+    <div *ngIf="mostrarGraficosMes">
+        <app-dashboard-mes [anoMesRecebido]="anoMesSelecionado" ></app-dashboard-mes>
+    </div>
+
 </div>

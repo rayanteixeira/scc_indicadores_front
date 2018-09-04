@@ -1,11 +1,9 @@
 <div class="main-content">
     <div class="row">
-        <div class="col-md-12" >
-            <div>
-                <b>BUSCAR: </b>
-                <input type="date" [(ngModel)]="filtro.dataLancamento" (ngModelChange)="buscaPorData($event)">
-                <!-- <h5>{{row.dataLancamento | date: 'dd/MM/yyyy'}}</h5> -->
-            </div>
+        <div class="col-md-12">
+
+            <label><b>BUSCAR: </b></label>
+            <input type="date" [(ngModel)]="filtro.dataLancamento" (ngModelChange)="buscaPorData($event)">
 
             <!-- TABELA -->
             <div class="row">
@@ -17,7 +15,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="bg-danger text-light">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>SOCOCO</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>
@@ -33,58 +31,58 @@
                                     <tr>
                                         <th>Cocos Desfibrados (und)</th>
                                         <td>{{(totalDia != null) ? totalDia.cocosDesfibrados : 0}}</td>
-                                        <td>{{(totalSemana[1]  != null) ? totalSemana[1] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.cocosDesfibrados : 0}}</td>
+                                        <td>{{(totalSemana[1] != null) ? totalSemana[1] : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.cocosDesfibrados : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
-                                        <th >
-                                            <span >Rendimento</span>
+                                        <th>
+                                            <span>Rendimento</span>
                                         </th>
-                                        <td>{{(rendimento  != null) ? rendimento : 0}}</td>
-                                        <td>{{(rendimentoSemana  != null) ? rendimentoSemana : 0}}</td>
-                                        <td>{{(rendimentoMes  != null) ? rendimentoMes : 0}}</td>
+                                        <td>{{(rendimento != null) ? rendimento : 0}}</td>
+                                        <td>{{(rendimentoSemana != null) ? rendimentoSemana : 0}}</td>
+                                        <td>{{(rendimentoMes != null) ? rendimentoMes : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>C.R.I (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.cri : 0}}</td>
                                         <td>{{(totalSemana[2] != null) ? totalSemana[2] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.cri : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.cri : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Flococo (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.flococo : 0}}</td>
                                         <td>{{(totalSemana[3] != null) ? totalSemana[3] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.flococo : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.flococo : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
                                         <th>
                                             <span style="color:rgb(154, 0, 0)">Total (C.R.I + Flococo)</span>
                                         </th>
-                                        <td>{{(totalcriflococo  != null) ? totalcriflococo : 0}}</td>
-                                        <td>{{(totalcriflococoSemana  != null) ? totalcriflococoSemana : 0}}</td>
-                                        <td>{{(totalcriflococoMes  != null) ? totalcriflococoMes : 0}}</td>
+                                        <td>{{(totalcriflococo != null) ? totalcriflococo : 0}}</td>
+                                        <td>{{(totalcriflococoSemana != null) ? totalcriflococoSemana : 0}}</td>
+                                        <td>{{(totalcriflococoMes != null) ? totalcriflococoMes : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Óleo Industrial Tipo A (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialTipoA : 0 }}</td>
                                         <td>{{(totalSemana[4] != null) ? totalSemana[4] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.oleoIndustrialTipoA : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.oleoIndustrialTipoA : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Óleo Industrial E.T.E (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialETE : 0}}</td>
                                         <td>{{(totalSemana[5] != null) ? totalSemana[5] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.oleoIndustrialETE : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.oleoIndustrialETE : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Torta - Ração (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.torta : 0}}</td>
                                         <td>{{(totalSemana[6] != null) ? totalSemana[6] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.torta : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.torta : 0}}</td>
                                     </tr>
                                     <!-- PRODUCAO ACQUA -->
                                     <tr class="bg-success text-light">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>ACQUA</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>
@@ -94,21 +92,21 @@
                                         <th>Água de Coco Sococo (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoSococo : 0 }}</td>
                                         <td>{{(totalSemana[7] != null) ? totalSemana[7] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.torta : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.aguaDeCocoSococo : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Água de Coco Verde (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoVerde : 0}}</td>
                                         <td>{{(totalSemana[8] != null) ? totalSemana[8] : 0}}</td>
-                                        <td>{{(totalMes  != null) ? totalMes.aguaDeCocoVerde : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.aguaDeCocoVerde : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
                                         <th>
                                             <span style="color:rgb(154, 0, 0)">TOTAL</span>
                                         </th>
                                         <td>{{totalAguaDeCoco}}</td>
-                                        <td>{{(totalAguaDeCocoSemana  != null) ? totalAguaDeCocoSemana : 0}}</td>
-                                        <td>{{(totalAguaDeCocoMes  != null) ? totalAguaDeCocoMes : 0}}</td>
+                                        <td>{{(totalAguaDeCocoSemana != null) ? totalAguaDeCocoSemana : 0}}</td>
+                                        <td>{{(totalAguaDeCocoMes != null) ? totalAguaDeCocoMes : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Caixa Padrão (und)</th>
@@ -131,7 +129,7 @@
 
                                     <!-- PRODUCAO AMAFIBRA -->
                                     <tr class="bg-warning ">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>AMAFIBRA</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardAnoComponent } from './ano/dashboard-ano.component';
 import { DashboardMesComponent } from './mes/dashboard-mes.component';
-import { DashboardDiaComponent } from './dia/dashboard-dia.component';
 import { MatButtonModule } from '@angular/material/button';
-
-import { CalendarModule } from 'primeng/primeng';
-import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,9 +15,16 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     DashboardRoutingModule,
     MatButtonModule,
-    CalendarModule
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, DashboardMesComponent, DashboardDiaComponent
+
+  declarations: [DashboardComponent, DashboardMesComponent, DashboardAnoComponent
   ]
 })
 export class DashboardModule { }

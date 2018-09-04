@@ -1,7 +1,8 @@
 <div class="main-content">
     <!-- <div class="container-fluid"> -->
     <div class="container-fluid">
-        <form class="example-form" [formGroup]="formulario" #formDirective="ngForm" (ngSubmit)="onSubmit(formulario.value, formDirective)" novalidate>
+        <form class="example-form" [formGroup]="formulario" #formDirective="ngForm" (ngSubmit)="onSubmit(formulario.value, formDirective)"
+            novalidate>
 
             <!-- CARD SOCOCO -->
             <div class="row">
@@ -15,8 +16,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput type="number" placeholder="Cocos Desfibrados (und)" formControlName="cocosDesfibrados" autocomplete="off">
-                                        <mat-error *ngIf="!formulario.controls['cocosDesfibrados'].valid">
+                                        <input matInput type="number" placeholder="Cocos Processados (und)" formControlName="cocosProcessados" autocomplete="off">
+                                        <mat-error *ngIf="!formulario.controls['cocosProcessados'].valid">
                                             campo
                                             <strong>obrigatório</strong>
                                         </mat-error>
@@ -24,8 +25,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput type="number" placeholder="Cocos Processados (und)" formControlName="cocosProcessados" autocomplete="off">
-                                        <mat-error *ngIf="!formulario.controls['cocosProcessados'].valid">
+                                        <input matInput type="number" placeholder="Cocos Desfibrados (und)" formControlName="cocosDesfibrados" autocomplete="off">
+                                        <mat-error *ngIf="!formulario.controls['cocosDesfibrados'].valid">
                                             campo
                                             <strong>obrigatório</strong>
                                         </mat-error>
@@ -55,8 +56,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput type="number" placeholder="Óleo Industrial ETE (L)" formControlName="oleoIndustrialETE" autocomplete="off">
-                                        <mat-error *ngIf="!formulario.controls['oleoIndustrialETE'].valid">
+                                        <input matInput type="number" placeholder="Óleo Industrial Tipo A (L)" formControlName="oleoIndustrialTipoA" autocomplete="off">
+                                        <mat-error *ngIf="!formulario.controls['oleoIndustrialTipoA'].valid">
                                             campo
                                             <strong>obrigatório</strong>
                                         </mat-error>
@@ -64,8 +65,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput type="number" placeholder="Óleo Industrial Tipo A (L)" formControlName="oleoIndustrialTipoA" autocomplete="off">
-                                        <mat-error *ngIf="!formulario.controls['oleoIndustrialTipoA'].valid">
+                                        <input matInput type="number" placeholder="Óleo Industrial ETE (L)" formControlName="oleoIndustrialETE" autocomplete="off">
+                                        <mat-error *ngIf="!formulario.controls['oleoIndustrialETE'].valid">
                                             campo
                                             <strong>obrigatório</strong>
                                         </mat-error>
@@ -180,10 +181,10 @@
             </div>
 
 
-            <mat-spinner *ngIf="loader" class="pull-right"  [strokeWidth]="2" [diameter]="42"></mat-spinner>
+            <mat-spinner *ngIf="loader" class="pull-right" [strokeWidth]="2" [diameter]="42"></mat-spinner>
             <button mat-raised-button type="submit" class="btn btn-success pull-right" [disabled]="!formulario.valid">Salvar</button>
             <button mat-raised-button type="reset" class="btn pull-right">Cancelar</button>
-           
+
             <div class="clearfix"></div>
 
 

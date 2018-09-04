@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { Http, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment';
+import { EventEmitter } from '@angular/core';
 
 export class DashboardFilter {
     dataLancamento: Date;
@@ -13,7 +14,7 @@ export class DashboardService {
 
     constructor(private http: Http) { }
 
-    public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
+    public buscarPorAno(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
 
         if (filter.dataLancamento) {
@@ -25,13 +26,12 @@ export class DashboardService {
             .toPromise()
             .then(resposta => {
                 const lancamento = resposta.json();
-                console.log(lancamento);
                 return lancamento;
             }
             );
     }
 
-    public buscarPorDia(filter: DashboardFilter): Promise<any[]> {
+    public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
 
         if (filter.dataLancamento) {
@@ -43,10 +43,25 @@ export class DashboardService {
             .toPromise()
             .then(resposta => {
                 const lancamento = resposta.json();
-                console.log(lancamento);
                 return lancamento;
             }
             );
+    }
+
+
+}
+
+
+export class EventEmitterService {
+
+    private static emitters: {
+        [nomeEvento: string]: EventEmitter<any>
+    } = {}
+
+    static get(nomeEvento: string): EventEmitter<any> {
+        if (!this.emitters[nomeEvento])
+            this.emitters[nomeEvento] = new EventEmitter<any>();
+        return this.emitters[nomeEvento];
     }
 
 }

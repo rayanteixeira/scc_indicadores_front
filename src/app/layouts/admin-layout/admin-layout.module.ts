@@ -26,7 +26,6 @@ import { ResumoDoDiaComponent } from '../../_resumo-diario/_resumo-diario-lista/
 
 import { DashboardModule } from '../../dashboard/dashboard.module';
 
-
 @NgModule({
   imports: [
     CommonModule,

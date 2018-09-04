@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { DashboardService, DashboardFilter } from '../dashboard.service';
+import { DashboardService, DashboardFilter, EventEmitterService } from '../dashboard.service';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-dashboard-mes',
@@ -8,52 +9,48 @@ import { DashboardService, DashboardFilter } from '../dashboard.service';
   styleUrls: ['./dashboard-mes.component.css']
 })
 export class DashboardMesComponent implements OnInit {
+
   private chart: AmChart;
 
   data = new DashboardFilter();
   dataProvider = []
 
-  pt: any;
-
+  @Input() anoMesRecebido: any;
+  anoMes: string;
   constructor(
     private dashboardService: DashboardService,
     private AmCharts: AmChartsService
-  ) { }
+  ) {
+
+    // Quando se clica mais de uma vez no botão buscar e tem ano e mes selecionados, então os dados são recebidos pelo 
+    // EventEmmitService.get('') vindo do componet PAI a cada vez que o usuário clica
+    this.emitterAnoMes();
+
+  }
 
   ngOnInit() {
-    this.service();
-    this.carregarCalendar();
-  }
-
-  pesquisar(event) {
-    console.log(event);
+    // Quando clica em buscar pela primeira vez e tem ano e mes selecionado, ele chama o onInit e 
+    // o valor dos dados vem do @INPUT
     this.service();
   }
 
-  private carregarCalendar() {
-    this.pt = {
-      firstDayOfWeek: 0,
-      dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-      dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-      dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
-      monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-      monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-      today: 'Hoje',
-      clear: 'Limpar'
-    };
-
+  emitterAnoMes() {
+    EventEmitterService.get('AnoMesSelecionado')
+      .subscribe(data => {
+        this.anoMesRecebido = data;
+        moment.locale('pt-BR')
+        this.anoMes = moment(data).format('MMMM YYYY');
+        this.service();
+      });
   }
 
-  private service() {
-    // this.data.dataLancamento = new Date('2018-05-02')
+  service() {
 
-    this.data.dataLancamento = (this.data.dataLancamento) ? this.data.dataLancamento : new Date('2018-05-02');
-
+    this.data.dataLancamento = this.anoMesRecebido;
+    moment.locale('pt-BR')
+    this.anoMes = moment(this.anoMesRecebido).format('MMMM YYYY');
     this.dashboardService.buscarPorMes(this.data)
       .then(resp => {
-        console.log(resp);
-
         resp.forEach(entidade => {
           this.chart = this.AmCharts.makeChart('cocoChart', this.cocoChartOptions(entidade.cocos));
           this.chart = this.AmCharts.makeChart('criFlococoChart', this.criFlococoChartOptions(entidade.criFlococos));
@@ -76,7 +73,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'id': 'idGraphs',
@@ -98,7 +95,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>CRI: [[value]]</span></b>',
@@ -119,7 +116,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Tipo A: [[value]]</span></b>',
@@ -140,7 +137,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Torta: [[value]]</span></b>',
@@ -157,7 +154,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Água C. Sococo: [[value]]</span></b>',
@@ -178,7 +175,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>% C. Germinado: [[value]]</span></b>',
@@ -194,7 +191,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caçambas: [[value]]</span></b>',
@@ -210,7 +207,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Caixa Padrão: [[value]]</span></b>',
@@ -227,7 +224,7 @@ export class DashboardMesComponent implements OnInit {
       'hideCredits': true,
       'type': 'serial',
       'theme': 'light',
-      'categoryField': 'mesLancamento',
+      'categoryField': 'diaLancamento',
       'dataProvider': dataProvider,
       'graphs': [{
         'balloonText': '[[category]]<br><b><span style=\'font-size:10px;\'>Fardos: [[value]]</span></b>',
