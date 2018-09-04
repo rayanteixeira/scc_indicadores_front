@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { Http, URLSearchParams } from '@angular/http';
 
 import * as moment from 'moment';
+import { EventEmitter } from '@angular/core';
 
 export class DashboardFilter {
     dataLancamento: Date;
@@ -47,5 +48,20 @@ export class DashboardService {
             );
     }
 
+
+}
+
+
+export class EventEmitterService {
+
+    private static emitters: {
+        [nomeEvento: string]: EventEmitter<any>
+    } = {}
+
+    static get(nomeEvento: string): EventEmitter<any> {
+        if (!this.emitters[nomeEvento])
+            this.emitters[nomeEvento] = new EventEmitter<any>();
+        return this.emitters[nomeEvento];
+    }
 
 }

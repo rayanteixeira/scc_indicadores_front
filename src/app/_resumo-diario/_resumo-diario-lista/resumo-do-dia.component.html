@@ -15,7 +15,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="bg-danger text-light">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>SOCOCO</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>
@@ -82,7 +82,7 @@
                                     </tr>
                                     <!-- PRODUCAO ACQUA -->
                                     <tr class="bg-success text-light">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>ACQUA</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>
@@ -92,7 +92,7 @@
                                         <th>Água de Coco Sococo (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoSococo : 0 }}</td>
                                         <td>{{(totalSemana[7] != null) ? totalSemana[7] : 0}}</td>
-                                        <td>{{(totalMes != null) ? totalMes.torta : 0}}</td>
+                                        <td>{{(totalMes != null) ? totalMes.aguaDeCocoSococo : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Água de Coco Verde (L)</th>
@@ -129,7 +129,7 @@
 
                                     <!-- PRODUCAO AMAFIBRA -->
                                     <tr class="bg-warning ">
-                                        <th>Produção Diária
+                                        <th>
                                             <strong>AMAFIBRA</strong>
                                         </th>
                                         <th *ngFor="let titleCol of headerRow"> {{titleCol}} </th>

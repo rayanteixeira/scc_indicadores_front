@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { DashboardService, DashboardFilter } from '../dashboard.service';
+import { DashboardService, DashboardFilter, EventEmitterService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard-ano',
@@ -8,33 +8,43 @@ import { DashboardService, DashboardFilter } from '../dashboard.service';
   styleUrls: ['./dashboard-ano.component.css']
 })
 export class DashboardAnoComponent implements OnInit {
+  
   private chart: AmChart;
 
   data = new DashboardFilter();
   dataProvider = []
-  years = [];
-  months = [];
-  days = [];
+ 
+  mesN: string;
+
+  @Input() anoRecebido: string;
 
   constructor(
     private dashboardService: DashboardService,
-    private AmCharts: AmChartsService
-  ) { }
-
-  ngOnInit() {
-    this.service();
-    this.years = [2012, 2013, 2014, 2015, 2017, 2018]
-    this.months = ['jan', 'fev', 'mar', 'abr', 'mai']
-    this.days = [11, 12, 13, 14, 15]
+    private AmCharts: AmChartsService,
+    
+  ) { 
+    //Quando o usuário escolhe outro ano e clica em buscar o EventeEmitterService.get('') envia o ano e atualiza a view
+    this.emitterAno();
   }
 
-  private service() {
-    this.data.dataLancamento = new Date('2018-05-02')
+  ngOnInit() {
+    //O component pai envia o ano atual, logo chama o component filho e entra no ngOnInit e recebe os dados pelo @Input
+    this.service()
+  }
 
-    this.dashboardService.buscarPorMes(this.data)
+  emitterAno(){
+    EventEmitterService.get('anoSelecionado')
+    .subscribe(data => {
+      this.anoRecebido = data; 
+        this.service();
+    });
+  }
+
+  service() {
+    const anoPesquisa: any = this.anoRecebido + '-01-01'
+    this.data.dataLancamento = anoPesquisa;
+    this.dashboardService.buscarPorAno(this.data)
       .then(resp => {
-        console.log(resp);
-
         resp.forEach(entidade => {
           this.chart = this.AmCharts.makeChart('cocoChart', this.cocoChartOptions(entidade.cocos));
           this.chart = this.AmCharts.makeChart('criFlococoChart', this.criFlococoChartOptions(entidade.criFlococos));
