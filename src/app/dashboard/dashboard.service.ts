@@ -48,15 +48,11 @@ export class DashboardService {
             );
     }
 
-
 }
-
 
 export class EventEmitterService {
 
-    private static emitters: {
-        [nomeEvento: string]: EventEmitter<any>
-    } = {}
+    private static emitters: {[nomeEvento: string]: EventEmitter<any>} = {}
 
     static get(nomeEvento: string): EventEmitter<any> {
         if (!this.emitters[nomeEvento])

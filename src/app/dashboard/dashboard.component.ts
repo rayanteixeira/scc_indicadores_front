@@ -2,16 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 
 import * as moment from 'moment';
-import { DashboardService, EventEmitterService } from './dashboard.service';
-
-
-
-
+import { EventEmitterService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
@@ -68,8 +64,6 @@ export class DashboardComponent implements OnInit {
     
     }
   }
-
-
 
   buscarAnoAtual(ano) {
     //Evento para envia ano atual para apresentar logo um gráfico na tela

@@ -4,13 +4,13 @@ import { Title } from '@angular/platform-browser';
 import { ResumoDiarioService } from './resumo-diario.service';
 import {FormControl, Validators,  FormGroup, FormBuilder, FormGroupDirective} from '@angular/forms';
 
-
+import * as moment from 'moment'
 
 
 @Component({
   selector: 'app-resumo-diario',
   templateUrl: './resumo-diario.component.html',
-  styleUrls: []
+  styleUrls: ['./resumo-diario.component.css']
 })
 export class ResumoDiarioComponent implements OnInit {
 
@@ -19,6 +19,10 @@ export class ResumoDiarioComponent implements OnInit {
 
   loader = false;
 
+  inputVazio: string;
+
+  dataAtual: any = moment().format('YYYY-MM-DD')
+ 
   constructor(
     private title: Title,
     private fb: FormBuilder,
@@ -34,31 +38,33 @@ export class ResumoDiarioComponent implements OnInit {
 
   form() {
     this.formulario = this.fb.group({
-      'cocosDesfibrados': new FormControl('', Validators.required),
-      'cocosProcessados': new FormControl('', Validators.required),
-      'cri': new FormControl('', Validators.required),
-      'flococo': new FormControl('', Validators.required),
-      'oleoIndustrialETE': new FormControl('', Validators.required),
-      'oleoIndustrialTipoA': new FormControl('', Validators.required),
-      'torta': new FormControl('', Validators.required),
-      'aguaDeCocoSococo': new FormControl('', Validators.required),
-      'aguaDeCocoVerde': new FormControl('', Validators.required),
-      'numeroDeFardos': new FormControl('', Validators.required),
-      'porcentagemCocoGerminado': new FormControl('', Validators.required),
-      'caixaPadrao': new FormControl('', Validators.required),
-      'totalDeCacambas': new FormControl('', Validators.required),
+      'dataLancamento': new FormControl(this.dataAtual, Validators.required),
+      'cocosDesfibrados': new FormControl(this.inputVazio, Validators.required),
+      'cocosProcessados': new FormControl(this.inputVazio, Validators.required),
+      'cri': new FormControl(this.inputVazio, Validators.required),
+      'flococo': new FormControl(this.inputVazio, Validators.required),
+      'oleoIndustrialETE': new FormControl(this.inputVazio, Validators.required),
+      'oleoIndustrialTipoA': new FormControl(this.inputVazio, Validators.required),
+      'torta': new FormControl(this.inputVazio, Validators.required),
+      'aguaDeCocoSococo': new FormControl(this.inputVazio, Validators.required),
+      'aguaDeCocoVerde': new FormControl(this.inputVazio, Validators.required),
+      'numeroDeFardos': new FormControl(this.inputVazio, Validators.required),
+      'porcentagemCocoGerminado': new FormControl(this.inputVazio, Validators.required),
+      'caixaPadrao': new FormControl(this.inputVazio, Validators.required),
+      'totalDeCacambas': new FormControl(this.inputVazio, Validators.required),
     })
   }
 
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
     this.loader = true;
+    console.log(formulario)
     this.resumoService.adicionar(formulario)
-      .subscribe(response => {
-        console.log(response);
-        formDirective.resetForm();
-        this.formulario.reset();
-        this.loader = false;
-      });
+       .subscribe(response => {
+         console.log(response);
+         formDirective.resetForm();
+         this.formulario.reset();
+         this.loader = false;
+       });
 
 
   }

@@ -1,0 +1,45 @@
+<div class="login-body">
+
+  <div class="container h100">
+    <div class="row align-items-center h-100">
+      <div class="col-md-5 my-auto mx-auto">
+
+        <div class="card">
+
+          <div class="card-header card-header-info">
+            <h4 class="card-title"><b>ACESSO RESTRITO</b></h4>
+            <p class="card-category"><b>Informe suas credenciais</b></p>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <form class="example-form" [formGroup]="formulario" #formDirective="ngForm" (ngSubmit)="onSubmit(formulario.value, formDirective)"
+                  novalidate>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username" formControlName="username" name="username" required>
+                    <mat-error *ngIf="!formulario.controls['username'].valid">campo <strong>obrigatório</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" formControlName="password" type="password" name="password"
+                      required>
+                    <mat-error *ngIf="!formulario.controls['password'].valid">campo <strong>obrigatório</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+                  <button mat-raised-button type="submit" class="btn btn-info pull-right" [disabled]="!formulario.valid">Login</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
