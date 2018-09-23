@@ -67,7 +67,7 @@ export class DashboardMesComponent implements OnInit {
         }
         );
 
-      });
+      }, error => { });
   };
 
   // SOCOCO

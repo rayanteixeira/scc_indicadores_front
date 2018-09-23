@@ -38,7 +38,7 @@ export class UserProfileComponent implements OnInit {
 
   openDialog(element): void {
     const dialogRef = this.dialog.open(RemoveDialog,{
-      //width: '250px',
+      // width: '250px',
       data: element
     });
 

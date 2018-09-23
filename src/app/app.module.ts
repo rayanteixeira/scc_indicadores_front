@@ -9,10 +9,10 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { AgmCoreModule } from '@agm/core';
-
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ErrorInterceptorProvider } from './interceptor/ErrorInterceptor';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -27,8 +27,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent,
   ],
-  providers: [],
+  providers: [
+    ErrorInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
