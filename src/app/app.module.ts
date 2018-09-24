@@ -7,9 +7,15 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+//import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthenticationService, AlertService } from './_services';
+import { AuthGuard } from './_guards';
 import { LoginComponent } from './login/login.component';
-import { MatButtonModule, MatCardModule, MatInputModule, MatProgressSpinnerModule, MatFormFieldModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatTableModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
+import { MailComponent } from './mail/mail.component';
 
 
 @NgModule({
@@ -20,17 +26,25 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatProgressSpinnerModul
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule,   
-    //MatFormFieldModule,
-    //MatButtonModule,
-    //MatInputModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    DashboardModule,
+    ResumoDiarioModule,
+    
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule   
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
-    //LoginComponent
+    //AdminLayoutComponent
+    LoginComponent,
+    MailComponent
   ],
-  providers: [],
+  //providers: [AuthService],
+  providers: [AuthenticationService, AuthGuard, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

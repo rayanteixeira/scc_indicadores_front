@@ -5,7 +5,7 @@ import { ResumoDiarioService } from './resumo-diario.service';
 import { MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule } from '@angular/material';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ResumoDiarioComponent } from './resumo-diario.component';
-import { ResumoDoDiaComponent } from './_resumo-diario-lista/resumo-do-dia.component';
+import { ResumoDoDiaComponent } from './resumo-diario-lista/resumo-do-dia.component';
 
 
 

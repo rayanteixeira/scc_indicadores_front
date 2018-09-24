@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
 import { MailComponent } from '../../mail/mail.component';
-import { ResumoDiarioComponent } from '../../_resumo-diario/resumo-diario.component';
-import { ResumoDoDiaComponent } from '../../_resumo-diario/_resumo-diario-lista/resumo-do-dia.component';
+import { ResumoDiarioComponent } from '../../resumo-diario/resumo-diario.component';
+import { ResumoDoDiaComponent } from '../../resumo-diario/resumo-diario-lista/resumo-do-dia.component';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { LoginComponent } from '../../login/login.component';

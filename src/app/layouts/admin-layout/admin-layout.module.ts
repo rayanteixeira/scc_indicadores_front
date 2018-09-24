@@ -17,7 +17,7 @@ import {
 
 import { DashboardModule } from '../../dashboard/dashboard.module';
 import { LoginComponent } from '../../login/login.component';
-import { ResumoDiarioModule } from '../../_resumo-diario/resumo-diario.module';
+import { ResumoDiarioModule } from '../../resumo-diario/resumo-diario.module';
 
 
 @NgModule({

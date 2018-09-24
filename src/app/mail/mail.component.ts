@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ResumoDiarioService } from '../_resumo-diario/resumo-diario.service';
+import { ResumoDiarioService } from '../resumo-diario/resumo-diario.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, } from '@angular/material';
 import { Validators, FormControl, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 

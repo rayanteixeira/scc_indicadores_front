@@ -20,7 +20,7 @@ input[type="date"] {
 
   @media (max-width: 400px) {
     .main-content{
-        margin-top: 40px;
+        margin-top: 25px;
     }
       
 }
