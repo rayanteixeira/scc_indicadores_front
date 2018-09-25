@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
+    resumoUrl = environment.base_url;
+
     login(credentials) {
-        return this.http.post<any>(`/users/authenticate`, credentials)
+        return this.http.post<any>(`${this.resumoUrl}/auth/refresh_token`, credentials)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
