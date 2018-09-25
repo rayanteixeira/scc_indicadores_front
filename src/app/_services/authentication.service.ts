@@ -2,28 +2,39 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
+import { LocalUser } from '../user/local_user.model';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+    url_login = environment.base_url_login;
 
-    resumoUrl = environment.base_url;
+    constructor(
+        private http: HttpClient,
+        private storage: StorageService
+    ) { }
 
     login(credentials) {
-        return this.http.post<any>(`${this.resumoUrl}/auth/refresh_token`, credentials)
-            .pipe(map(user => {
-                // login successful if there's a jwt token in the response
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                }
+        return this.http.post(this.url_login, credentials,
+            {
+                observe: 'response',
+                responseType: 'text'
+            });
 
-                return user;
-            }));
+    }
+
+    successfulLogin(authorizationValue: string) {
+        let tok = authorizationValue.substring(7); // pegar somente o token sem a palavra Bearer
+        let user: LocalUser = {
+            token: tok
+        };
+
+        this.storage.setLocalUser(user);
+
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        this.storage.setLocalUser(null);
     }
 }

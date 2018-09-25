@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: '', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Cocos Processados (und)" formControlName="cocosProcessados"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['cocosProcessados'].valid">
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: '', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput 
                                             placeholder="Cocos Desfibrados (und)" formControlName="cocosDesfibrados"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['cocosDesfibrados'].valid">
@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: '', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="C.R.I (kg)" formControlName="cri" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['cri'].valid">
                                             campo
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: '', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput 
                                             placeholder="Flococo (kg)" formControlName="flococo" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['flococo'].valid">
                                             campo
@@ -69,7 +69,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Óleo Industrial Tipo A (L)" formControlName="oleoIndustrialTipoA"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialTipoA'].valid">
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput 
                                             placeholder="Óleo Industrial ETE (L)" formControlName="oleoIndustrialETE"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialETE'].valid">
@@ -93,7 +93,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Torta (ração - kg)" formControlName="torta" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['torta'].valid">
                                             campo
@@ -120,7 +120,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 2, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Água de Coco Sococo (L)" formControlName="aguaDeCocoSococo"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoSococo'].valid">
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 2, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Água de Coco Verde (L)" formControlName="aguaDeCocoVerde"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoVerde'].valid">
@@ -144,7 +144,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Caixa Padrão (und)" formControlName="caixaPadrao" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['caixaPadrao'].valid">
                                             campo
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Coco Germinado (%)" formControlName="porcentagemCocoGerminado"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['porcentagemCocoGerminado'].valid">
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Total de Cacambas" formControlName="totalDeCacambas"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['totalDeCacambas'].valid">
@@ -193,7 +193,7 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput currencyMask [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }"
+                                        <input matInput
                                             placeholder="Número de Fardos" id="numeroDeFardos" formControlName="numeroDeFardos"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['numeroDeFardos'].valid">

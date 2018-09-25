@@ -11,8 +11,6 @@ import 'rxjs/add/operator/catch';
 import { Lancamento, TabelaResumosDiarios } from './resumo-diario.model';
 import { ErrorHandler } from '../errorHandler';
 
-
-
 export class Filtro {
   dataLancamento: Date;
 }
@@ -55,9 +53,7 @@ export class ResumoDiarioService {
       .catch(ErrorHandler.handlerError);
   }
 
- 
   pesquisar(filtro: Filtro): Promise<Lancamento[]> {
-
     const params = new URLSearchParams();
 
     if (filtro.dataLancamento) {
@@ -91,15 +87,15 @@ export class ResumoDiarioService {
   removeDestinatario(element): Observable<any> {
     return this.http.delete(`${this.resumoUrl}/destinatario/${element.id}`);
   }
-  
+
   salvarDestinatario(destinatario): Observable<any> {
     return this.http.post(
       `${this.resumoUrl}/destinatario`, destinatario)
-      .map((resposta: Response ) => resposta.json())
+      .map((resposta: Response) => resposta.json())
       .catch(ErrorHandler.handlerError);
   }
-  
- 
+
+
 }
 
 

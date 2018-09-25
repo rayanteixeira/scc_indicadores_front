@@ -2,25 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, AlertService} from '../_services';;
-
-
-
+import { AuthenticationService, AlertService } from '../_services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService
-  ) { }
-
 
   formulario: FormGroup;
 
@@ -31,11 +19,19 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string
 
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private auth: AuthenticationService,
+    private alertService: AlertService
+  ) { }
+
   ngOnInit() {
     this.form();
 
     // reset login status
-    this.authenticationService.logout();
+    // this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -48,10 +44,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
+
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective) {
-    const credentials: any = formulario;
-    console.log(credentials)
+    const creds: any = formulario;
+    console.log(creds)
     this.loading = true;
     this.submitted = true;
 
@@ -60,12 +56,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    
-    this.authenticationService.login(credentials)
+    this.auth.login(creds)
       .pipe(first())
       .subscribe(
         resp => {
-          this.router.navigate([this.returnUrl]);
+          this.auth.successfulLogin(resp.headers.get('Authorization'));
+
+          this.router.navigate(['dashboard']);
         },
         error => {
           this.alertService.error(error);

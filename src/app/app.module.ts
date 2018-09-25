@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-//import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+// import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthenticationService, AlertService } from './_services';
 import { AuthGuard } from './_guards';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
 import { MailComponent } from './mail/mail.component';
+import { StorageService } from './_services/storage.service';
 
 
 @NgModule({
@@ -30,21 +31,20 @@ import { MailComponent } from './mail/mail.component';
     HttpClientModule,
     DashboardModule,
     ResumoDiarioModule,
-    
     MatButtonModule,
     MatInputModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule   
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
-    //AdminLayoutComponent
+    // AdminLayoutComponent
     LoginComponent,
     MailComponent
   ],
-  //providers: [AuthService],
-  providers: [AuthenticationService, AuthGuard, AlertService],
+  // providers: [AuthService],
+  providers: [AuthenticationService, AuthGuard, AlertService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
