@@ -17,6 +17,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
 import { MailComponent } from './mail/mail.component';
 import { StorageService } from './_services/storage.service';
+import { AuthInterceptorProvider } from './interceptor/auth-intercptor';
+import { ErrorInterceptorProvider } from './interceptor/ErrorInterceptor';
+import { JwtHelper } from 'angular2-jwt';
 
 
 @NgModule({
@@ -44,7 +47,15 @@ import { StorageService } from './_services/storage.service';
     MailComponent
   ],
   // providers: [AuthService],
-  providers: [AuthenticationService, AuthGuard, AlertService, StorageService],
+  providers: [
+    AuthenticationService,
+    JwtHelper,
+    AuthGuard,
+    AlertService,
+    StorageService,
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

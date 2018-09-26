@@ -62,25 +62,13 @@ export class LoginComponent implements OnInit {
         resp => {
           this.auth.successfulLogin(resp.headers.get('Authorization'));
 
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/resumo-do-dia']);
         },
         error => {
-          this.alertService.error(error);
+          console.log(error.status);
+          
+          this.alertService.error(error.error);
           this.loading = false;
         });
   }
-
-  /*
-   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
-    const credencial: any = formulario;
-    console.log(credencial)
-    if (credencial.username == 'admin' && credencial.username == 'admin') {
-      this.router.navigate(["resumo-do-dia"]);
-     
-      formDirective.resetForm();
-      this.formulario.reset();
-    } else {
-      alert("Invalid credentials");
-    }
-  }*/
 }

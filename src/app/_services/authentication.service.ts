@@ -4,14 +4,15 @@ import { map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { LocalUser } from '../user/local_user.model';
 import { StorageService } from './storage.service';
-
+import { JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class AuthenticationService {
     url_login = environment.base_url_login;
 
     constructor(
         private http: HttpClient,
-        private storage: StorageService
+        private storage: StorageService,
+        private jwtHelper: JwtHelper
     ) { }
 
     login(credentials) {
@@ -26,7 +27,8 @@ export class AuthenticationService {
     successfulLogin(authorizationValue: string) {
         let tok = authorizationValue.substring(7); // pegar somente o token sem a palavra Bearer
         let user: LocalUser = {
-            token: tok
+            token: tok,
+            username: this.jwtHelper.decodeToken(tok).sub
         };
 
         this.storage.setLocalUser(user);
