@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, AlertService} from '../_services';;
+import { AuthenticationService, AlertService } from '../_services';;
 
 
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
 
   form() {
@@ -48,19 +48,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
+
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective) {
     const credentials: any = formulario;
     console.log(credentials)
-    this.loading = true;
-    this.submitted = true;
+    //this.loading = true;
+    //this.submitted = true;
 
     // stop here if form is invalid
     if (this.formulario.invalid) {
       return;
     }
 
-    
+
     this.authenticationService.login(credentials)
       .pipe(first())
       .subscribe(
@@ -69,21 +69,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.alertService.error(error);
-          this.loading = false;
+          // this.loading = false;
         });
   }
-
-  /*
-   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
-    const credencial: any = formulario;
-    console.log(credencial)
-    if (credencial.username == 'admin' && credencial.username == 'admin') {
-      this.router.navigate(["resumo-do-dia"]);
-     
-      formDirective.resetForm();
-      this.formulario.reset();
-    } else {
-      alert("Invalid credentials");
-    }
-  }*/
 }

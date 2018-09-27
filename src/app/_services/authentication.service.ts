@@ -7,10 +7,10 @@ import { environment } from 'environments/environment';
 export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
-    resumoUrl = environment.base_url;
+    resumoUrl = environment.login_url;
 
     login(credentials) {
-        return this.http.post<any>(`${this.resumoUrl}/auth/refresh_token`, credentials)
+        return this.http.post<any>(`${this.resumoUrl}/login`, credentials)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

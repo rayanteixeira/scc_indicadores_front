@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
 import { MailComponent } from './mail/mail.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
 @NgModule({
@@ -39,9 +40,9 @@ import { MailComponent } from './mail/mail.component';
   ],
   declarations: [
     AppComponent,
-    //AdminLayoutComponent
+    AdminLayoutComponent,
     LoginComponent,
-    MailComponent
+    //MailComponent
   ],
   //providers: [AuthService],
   providers: [AuthenticationService, AuthGuard, AlertService],
