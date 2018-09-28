@@ -2,14 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { first } from 'rxjs/operators';
-<<<<<<< HEAD
 import { AuthenticationService, AlertService } from '../_services';
-=======
-import { AuthenticationService, AlertService } from '../_services';;
 
-
-
->>>>>>> 1f04ba96f68fb36a6ba916fa45eb67051a63bcbb
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -63,29 +57,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-<<<<<<< HEAD
     this.auth.login(creds)
-=======
-
-    this.authenticationService.login(credentials)
->>>>>>> 1f04ba96f68fb36a6ba916fa45eb67051a63bcbb
       .pipe(first())
       .subscribe(
         resp => {
-          this.auth.successfulLogin(resp.headers.get('authorization')); // Pega o token e coloca LocalStoge
+          this.auth.successfulLogin(resp.headers.get('Authorization')); // Pega o token e coloca LocalStoge
 
-          this.router.navigate(['/resumo-do-dia']);
+          //this.router.navigate(['/resumo-do-dia']);
         },
         error => {
-<<<<<<< HEAD
           console.log(error.status);
-          
+
           this.alertService.error(error.error);
           this.loading = false;
-=======
-          this.alertService.error(error);
-          // this.loading = false;
->>>>>>> 1f04ba96f68fb36a6ba916fa45eb67051a63bcbb
         });
   }
 }
