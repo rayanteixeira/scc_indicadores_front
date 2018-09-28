@@ -13,6 +13,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'mail',           component: MailComponent },
     { path: 'resumo-diario',  component: ResumoDiarioComponent },
     { path: 'resumo-do-dia',  component: ResumoDoDiaComponent },
-    { path: 'login',          component: LoginComponent },
+    //{ path: 'login',          component: LoginComponent },
 ];
 

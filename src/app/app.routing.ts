@@ -12,26 +12,20 @@ import { ResumoDoDiaComponent } from './resumo-diario/resumo-diario-lista/resumo
 import { AuthGuard } from './_guards';
 
 const routes: Routes =[
-  //{ path: '',               component: LoginComponent, canActivate: [AuthGuard]},  
-  { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'mail',           component: MailComponent, canActivate: [AuthGuard] },
-  { path: 'resumo-diario',  component: ResumoDiarioComponent },
-  { path: 'resumo-do-dia',  component: ResumoDoDiaComponent },
-  { path: 'login',          component: LoginComponent },
- 
-  // otherwise redirect to home
-  { path: '**', redirectTo: 'login' },
 
-  /*
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
-  , {
-     path: '',
-     component: AdminLayoutComponent,
-     children: [
-         {
-       path: '',
-       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-   }]}*/
+  { path: 'login', component: LoginComponent },
+
+  { path: '', redirectTo: 'resumo-do-dia', pathMatch: 'full'}, 
+  { path: '', component: AdminLayoutComponent, // canActivate: [AuthGuard] ,
+   children: [
+        {
+      path: '',
+      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+  }]},
+   
+  // otherwise redirect to home
+  // { path: '**', redirectTo: 'login' },
+
 ];
 
 @NgModule({

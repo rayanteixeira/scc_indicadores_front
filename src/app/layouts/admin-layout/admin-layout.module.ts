@@ -37,7 +37,7 @@ import { ResumoDiarioModule } from '../../resumo-diario/resumo-diario.module';
   declarations: [
     MailComponent,
     MailRemoveDialogComponent,
-    LoginComponent
+    //LoginComponent
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
   entryComponents: [MailRemoveDialogComponent]
