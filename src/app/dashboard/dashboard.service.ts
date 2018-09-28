@@ -16,6 +16,7 @@ export class DashboardService {
 
     public buscarPorAno(filter: DashboardFilter): Promise<any[]> {
         const params = new URLSearchParams();
+        
 
         if (filter.dataLancamento) {
             params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))

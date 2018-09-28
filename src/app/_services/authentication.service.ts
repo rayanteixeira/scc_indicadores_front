@@ -24,9 +24,12 @@ export class AuthenticationService {
 
     }
 
-    successfulLogin(authorizationValue: string) {
-        let tok = authorizationValue.substring(7); // pegar somente o token sem a palavra Bearer
-        let user: LocalUser = {
+    successfulLogin(token: string) {
+        console.log("tok", token);
+
+        const tok = token.substring(7); // pegar somente o token sem a palavra Bearer
+        
+        const user: LocalUser = {
             token: tok,
             username: this.jwtHelper.decodeToken(tok).sub
         };

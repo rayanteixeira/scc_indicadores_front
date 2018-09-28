@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         resp => {
-          this.auth.successfulLogin(resp.headers.get('Authorization'));
+          this.auth.successfulLogin(resp.headers.get('authorization')); // Pega o token e coloca LocalStoge
 
           this.router.navigate(['/resumo-do-dia']);
         },

@@ -5,7 +5,7 @@ import { STORAGE_KEYS } from '../_guards/storage_keys.config';
 @Injectable()
 export class StorageService {
 
-    constructor() { }
+    constructor() { } 
 
     getLocalUser(): LocalUser {
         const usr = localStorage.getItem(STORAGE_KEYS.localUser);
