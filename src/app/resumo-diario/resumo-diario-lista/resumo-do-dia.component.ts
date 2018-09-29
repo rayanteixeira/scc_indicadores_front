@@ -60,7 +60,7 @@ export class ResumoDoDiaComponent implements OnInit {
     this.totalSemana = []
 
     this.filtro.dataLancamento = event
-    this.resumoService.buscarPorData(this.filtro)
+    this.resumoService.buscarResumoPorData(this.filtro)
       .subscribe((resumos: TabelaResumosDiarios) => {
         console.log(resumos);
 
@@ -120,7 +120,7 @@ export class ResumoDoDiaComponent implements OnInit {
   private resumoDoDia(): void {
 
     this.filtro.dataLancamento = this.dataAtual
-    this.resumoService.buscarPorData(this.filtro)
+    this.resumoService.buscarResumoPorData(this.filtro)
     .subscribe((resumos: TabelaResumosDiarios) => {
      
       if (resumos) { // se houver resumos faça...

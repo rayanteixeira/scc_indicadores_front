@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService, AlertService } from '../_services';
+import { StorageService } from '../_services/storage.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,25 +14,25 @@ import { AuthenticationService, AlertService } from '../_services';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
-
   username: string;
   password: string;
 
   loading = false;
-  submitted = false;
+
   returnUrl: string
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private auth: AuthenticationService,
-    private alertService: AlertService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService,
+    private localStorage: StorageService
   ) { }
 
   ngOnInit() {
     this.form();
-
+    this.localStorage.removeToken()
     // reset login status
     // this.authenticationService.logout();
 
@@ -48,28 +50,21 @@ export class LoginComponent implements OnInit {
 
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective) {
     const creds: any = formulario;
-    console.log(creds)
-    this.loading = true;
-    this.submitted = true;
-
     // stop here if form is invalid
     if (this.formulario.invalid) {
       return;
     }
 
-    this.auth.login(creds)
+    this.authenticationService.login(creds)
       .pipe(first())
       .subscribe(
         resp => {
-          this.auth.successfulLogin(resp.headers.get('Authorization')); // Pega o token e coloca LocalStoge
-
-          //this.router.navigate(['/resumo-do-dia']);
+          this.localStorage.saveToken(resp.headers.get('Authorization'));
+          this.router.navigate(['/resumo-do-dia']);
         },
         error => {
-          console.log(error.status);
-
+          console.log('Erro login: ' + error.status);
           this.alertService.error(error.error);
-          this.loading = false;
         });
   }
 }

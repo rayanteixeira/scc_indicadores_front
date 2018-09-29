@@ -42,7 +42,7 @@ export class MailComponent implements OnInit {
   }
 
   destinatarios() {
-    this.sococoService.destinatario()
+    this.sococoService.destinatarios()
       .subscribe((destinatario) => {
         this.dataSource = destinatario;
       })
@@ -67,10 +67,11 @@ export class MailComponent implements OnInit {
       if (result == true) {
         this.sococoService.removeDestinatario(element)
           .subscribe((resp) => {
-            if(resp.status == 200){
+           // console.log(resp)
+           // if(resp.status == 200){
               this.dataSource = this.dataSource.filter(e => e !== element);
               this.destinatarios();
-            }
+          //  }
           })
       }
     });

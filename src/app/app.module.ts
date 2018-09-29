@@ -11,15 +11,16 @@ import { AuthenticationService, AlertService } from './_services';
 import { AuthGuard } from './_guards';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule, MatInputModule, MatTableModule, MatIconModule, MatDialogModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
-import { MailComponent } from './mail/mail.component';
 import { StorageService } from './_services/storage.service';
-import { AuthInterceptorProvider } from './interceptor/auth-intercptor';
-import { ErrorInterceptorProvider } from './interceptor/ErrorInterceptor';
 import { JwtHelper } from 'angular2-jwt';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
+import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
+
+
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
     DashboardModule,
     ResumoDiarioModule,
     MatButtonModule,
@@ -38,6 +40,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     MatTableModule,
     MatIconModule,
     MatDialogModule
+    
   ],
   declarations: [
     AppComponent,
@@ -52,8 +55,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AuthGuard,
     AlertService,
     StorageService,
-    AuthInterceptorProvider,
-    ErrorInterceptorProvider
+    //AuthInterceptorProvider,
+    ErrorInterceptorProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpsRequestInterceptor,
+      multi: true,
+     }
   ],
   bootstrap: [AppComponent]
 })

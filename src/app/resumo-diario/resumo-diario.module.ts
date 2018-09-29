@@ -5,6 +5,8 @@ import { ResumoDiarioService } from './resumo-diario.service';
 import { MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule } from '@angular/material';
 import { ResumoDiarioComponent } from './resumo-diario.component';
 import { ResumoDoDiaComponent } from './resumo-diario-lista/resumo-do-dia.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpsRequestInterceptor } from '../_interceptor/http-interceptor';
 @NgModule({
   imports: [
     CommonModule,

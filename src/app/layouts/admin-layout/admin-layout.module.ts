@@ -18,6 +18,8 @@ import {
 import { DashboardModule } from '../../dashboard/dashboard.module';
 import { LoginComponent } from '../../login/login.component';
 import { ResumoDiarioModule } from '../../resumo-diario/resumo-diario.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpsRequestInterceptor } from '../../_interceptor/http-interceptor';
 
 
 @NgModule({

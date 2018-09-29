@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { LocalUser } from '../user/local_user.model';
-import { STORAGE_KEYS } from '../_guards/storage_keys.config';
+import { UserAccess } from '../user/user.model';
+
+const TOKEN_KEY: string = 'access'
 
 @Injectable()
 export class StorageService {
 
     constructor() { } 
 
-    getLocalUser(): LocalUser {
-        const usr = localStorage.getItem(STORAGE_KEYS.localUser);
-        if (usr == null) {
-            return null;
-        } else {
-            return JSON.parse(usr);
-        }
+
+    getToken() {
+    console.log("Token recuperado: "+localStorage.getItem(TOKEN_KEY));
+      return localStorage.getItem(TOKEN_KEY);
     }
 
-    setLocalUser(obj: LocalUser) {
-        if (obj == null) {
-            localStorage.removeItem(STORAGE_KEYS.localUser);
-        } else {
-            localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
-        }
+    saveToken(userAccess: string) {
+     
+        localStorage.removeItem(TOKEN_KEY);
+    
+        const token = userAccess.substring(7)
+        localStorage.setItem(TOKEN_KEY, token);
     }
+    
+    removeToken(){
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.clear();
+    }
+    
 }

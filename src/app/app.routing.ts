@@ -16,7 +16,7 @@ const routes: Routes =[
   { path: 'login', component: LoginComponent },
 
   { path: '', redirectTo: 'resumo-do-dia', pathMatch: 'full'}, 
-  { path: '', component: AdminLayoutComponent, // canActivate: [AuthGuard] ,
+  { path: '', component: AdminLayoutComponent,  canActivate: [AuthGuard] ,
    children: [
         {
       path: '',
