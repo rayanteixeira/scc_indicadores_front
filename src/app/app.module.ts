@@ -18,6 +18,7 @@ import { JwtHelper } from 'angular2-jwt';
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
     DashboardModule,
     ResumoDiarioModule,
     AdminLayoutModule,
+    UserModule,
     MatButtonModule,
     MatInputModule,
     MatTableModule,
