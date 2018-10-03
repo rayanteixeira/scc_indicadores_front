@@ -12,21 +12,19 @@ import {
   MatIconModule,
   MatDialogModule,
   MAT_DATE_LOCALE
-
 } from '@angular/material';
 
 import { DashboardModule } from '../../dashboard/dashboard.module';
-import { LoginComponent } from '../../login/login.component';
 import { ResumoDiarioModule } from '../../resumo-diario/resumo-diario.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpsRequestInterceptor } from '../../_interceptor/http-interceptor';
-
+import { AdminLayoutComponent } from './admin-layout.component';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardModule,
     ResumoDiarioModule,
+    ComponentsModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
@@ -39,7 +37,8 @@ import { HttpsRequestInterceptor } from '../../_interceptor/http-interceptor';
   declarations: [
     MailComponent,
     MailRemoveDialogComponent,
-    //LoginComponent
+    AdminLayoutComponent
+    // LoginComponent
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
   entryComponents: [MailRemoveDialogComponent]

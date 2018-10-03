@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AuthenticationService, AlertService } from './_services';
 import { AuthGuard } from './_guards';
@@ -16,37 +15,32 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
 import { StorageService } from './_services/storage.service';
 import { JwtHelper } from 'angular2-jwt';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
-
-
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    ComponentsModule,
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
     DashboardModule,
     ResumoDiarioModule,
+    AdminLayoutModule,
     MatButtonModule,
     MatInputModule,
     MatTableModule,
     MatIconModule,
     MatDialogModule
-    
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
     LoginComponent,
-    //MailComponent
+    // MailComponent
   ],
   // providers: [AuthService],
   providers: [
@@ -55,7 +49,7 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
     AuthGuard,
     AlertService,
     StorageService,
-    //AuthInterceptorProvider,
+    // AuthInterceptorProvider,
     ErrorInterceptorProvider,
     {
       provide: HTTP_INTERCEPTORS,
