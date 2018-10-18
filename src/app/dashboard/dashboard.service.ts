@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
-import { Http, URLSearchParams } from '@angular/http';
+//import { URLSearchParams, RequestOptions, Http } from '@angular/http';
 
 import * as moment from 'moment';
 import { EventEmitter } from '@angular/core';
+import { StorageService } from '../_services/storage.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+
+
 
 export class DashboardFilter {
     dataLancamento: Date;
@@ -12,51 +17,36 @@ export class DashboardFilter {
 @Injectable()
 export class DashboardService {
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient, private storage: StorageService) { }
 
     public buscarPorAno(filter: DashboardFilter): Promise<any[]> {
-        const params = new URLSearchParams();
-
-        if (filter.dataLancamento) {
-            params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
-        }
-
-        return this.http.get(`${environment.base_url}/dashboard/ano`,
-            { search: params })
+        
+        const option = filter.dataLancamento ? { params: new HttpParams().set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD')) } : {}
+        return this.http.get<any>(`${environment.base_url}/dashboard/ano`, option)
             .toPromise()
             .then(resposta => {
-                const lancamento = resposta.json();
-                return lancamento;
+                // const lancamento = JSON.stringify(resposta) ;
+                return resposta;
             }
             );
     }
 
     public buscarPorMes(filter: DashboardFilter): Promise<any[]> {
-        const params = new URLSearchParams();
-
-        if (filter.dataLancamento) {
-            params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
-        }
-
-        return this.http.get(`${environment.base_url}/dashboard/mes`,
-            { search: params })
+        const option = filter.dataLancamento ? { params: new HttpParams().set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD')) } : {}
+        return this.http.get<any>(`${environment.base_url}/dashboard/mes`, option)
             .toPromise()
             .then(resposta => {
-                const lancamento = resposta.json();
-                return lancamento;
+                // const lancamento = resposta.json();
+                return resposta;
             }
             );
     }
 
-
 }
-
 
 export class EventEmitterService {
 
-    private static emitters: {
-        [nomeEvento: string]: EventEmitter<any>
-    } = {}
+    private static emitters: { [nomeEvento: string]: EventEmitter<any> } = {}
 
     static get(nomeEvento: string): EventEmitter<any> {
         if (!this.emitters[nomeEvento])

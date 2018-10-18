@@ -28,7 +28,7 @@ export class DashboardAnoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // O component pai envia o ano atual, logo chama o component filho e entra no ngOnInit e recebe os dados pelo @Input
+    //O component pai envia o ano atual, logo chama o component filho e entra no ngOnInit e recebe os dados pelo @Input
     this.service()
   }
 

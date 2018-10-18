@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ResumoDiarioService } from '../_resumo-diario/resumo-diario.service';
+import { ResumoDiarioService } from '../resumo-diario/resumo-diario.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, } from '@angular/material';
 import { Validators, FormControl, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 
@@ -7,15 +7,14 @@ export interface Destinatario {
   id: number;
   nome: string;
   email: string;
-  //  destinatario: string;
 }
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  selector: 'app-mail',
+  templateUrl: './mail.component.html',
+  styleUrls: ['./mail.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class MailComponent implements OnInit {
 
   formulario: FormGroup;
   displayedColumns: string[];
@@ -43,7 +42,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   destinatarios() {
-    this.sococoService.destinatario()
+    this.sococoService.destinatarios()
       .subscribe((destinatario) => {
         this.dataSource = destinatario;
       })
@@ -60,7 +59,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   modalExcluir(element): void {
-    const dialogRef = this.dialog.open(RemoveDialog, {
+    const dialogRef = this.dialog.open(MailRemoveDialogComponent, {
       data: element
     });
 
@@ -68,10 +67,11 @@ export class UserProfileComponent implements OnInit {
       if (result == true) {
         this.sococoService.removeDestinatario(element)
           .subscribe((resp) => {
-            if(resp.status == 200){
+           // console.log(resp)
+           // if(resp.status == 200){
               this.dataSource = this.dataSource.filter(e => e !== element);
               this.destinatarios();
-            }
+          //  }
           })
       }
     });
@@ -79,12 +79,12 @@ export class UserProfileComponent implements OnInit {
 }
 
 @Component({
-  selector: 'remove-dialog',
-  templateUrl: './remove-dialog.html',
+  selector: 'mail-remove-dialog',
+  templateUrl: './mail-remove-dialog.component.html',
 })
-export class RemoveDialog {
+export class MailRemoveDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<RemoveDialog>,
+    public dialogRef: MatDialogRef<MailRemoveDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Destinatario) {
 
   }

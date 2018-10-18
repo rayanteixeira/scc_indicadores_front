@@ -1,0 +1,26 @@
+.text-on-pannel-sococo {
+    background: #f00 none repeat scroll 0 0;
+}
+
+.text-on-pannel-acqua {
+    background: rgb(21, 199, 110) none repeat scroll 0 0;
+}
+
+.text-on-pannel-amafibra {
+    background: rgb(189, 154, 0) none repeat scroll 0 0;
+}
+
+
+input[type="date"] {
+    font-weight: bold;
+    border-radius: 5px;
+    /* padding: 5px 5px; */
+  }
+
+
+  @media (max-width: 400px) {
+    .main-content{
+        margin-top: 25px;
+    }
+      
+}

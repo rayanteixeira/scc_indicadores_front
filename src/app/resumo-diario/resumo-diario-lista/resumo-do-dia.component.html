@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content table-main">
     <div class="row">
         <div class="col-md-12">
 
@@ -7,13 +7,17 @@
 
             <!-- TABELA -->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body table-responsive">
+                <div class="col-md-12 table-div-container">
+                    <div class="card table-card-container">
+                        <div class="card-body table-responsive table-card-body-container">
 
                             <!-- PRODUCAO SOCOCO -->
                             <table class="table table-bordered table-hover">
                                 <thead>
+                                    <!-- <tr>
+                                        <th></th>
+                                        <th colspan="3" style="text-align:center;vertical-align:top" class="bg-danger text-light">TOTAL</th>
+                                    </tr> -->
                                     <tr class="bg-danger text-light">
                                         <th>
                                             <strong>SOCOCO</strong>
@@ -23,13 +27,13 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>Cocos Processados (und)</th>
-                                        <td>{{(totalDia != null) ? totalDia.cocosProcessados : 0 }}</td>
+                                        <th>Cocos Proces. (und)</th>
+                                        <td>{{(totalDia != null) ? totalDia.cocosProcessados : 0}}</td>
                                         <td>{{(totalSemana[0] != null) ? totalSemana[0] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.cocosProcessados : 0}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Cocos Desfibrados (und)</th>
+                                        <th>Cocos Desf. (und)</th>
                                         <td>{{(totalDia != null) ? totalDia.cocosDesfibrados : 0}}</td>
                                         <td>{{(totalSemana[1] != null) ? totalSemana[1] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.cocosDesfibrados : 0}}</td>
@@ -63,13 +67,13 @@
                                         <td>{{(totalcriflococoMes != null) ? totalcriflococoMes : 0}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Óleo Industrial Tipo A (L)</th>
+                                        <th>Óleo Ind. Tipo A (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialTipoA : 0 }}</td>
                                         <td>{{(totalSemana[4] != null) ? totalSemana[4] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.oleoIndustrialTipoA : 0}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Óleo Industrial E.T.E (L)</th>
+                                        <th>Óleo Ind. E.T.E (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialETE : 0}}</td>
                                         <td>{{(totalSemana[5] != null) ? totalSemana[5] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.oleoIndustrialETE : 0}}</td>
@@ -89,13 +93,13 @@
                                     </tr>
 
                                     <tr>
-                                        <th>Água de Coco Sococo (L)</th>
+                                        <th>Água de C. Sococo (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoSococo : 0 }}</td>
                                         <td>{{(totalSemana[7] != null) ? totalSemana[7] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.aguaDeCocoSococo : 0}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Água de Coco Verde (L)</th>
+                                        <th>Água de C. Verde (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoVerde : 0}}</td>
                                         <td>{{(totalSemana[8] != null) ? totalSemana[8] : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.aguaDeCocoVerde : 0}}</td>
@@ -117,8 +121,12 @@
                                     <tr>
                                         <th>Coco Germinado (%)</th>
                                         <td>{{(totalDia != null) ? totalDia.porcentagemCocoGerminado : 0}}</td>
-                                        <td>{{(totalSemana[10] != null) ? totalSemana[10] : 0}}</td>
-                                        <td>{{(totalMes != null) ? totalMes.porcentagemCocoGerminado : 0}}</td>
+                                        <td>
+                                            <!-- {{(totalSemana[10] != null) ? totalSemana[10] : 0}} -->
+                                        </td>
+                                        <td>
+                                            <!-- {{(totalMes != null) ? totalMes.porcentagemCocoGerminado : 0}} -->
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th> Total de Cacambas</th>

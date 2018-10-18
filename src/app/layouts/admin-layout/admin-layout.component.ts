@@ -9,7 +9,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss']
+  //styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
   private _router: Subscription;
@@ -57,10 +57,12 @@ export class AdminLayoutComponent implements OnInit {
           ps = new PerfectScrollbar(elemSidebar);
       }
   }
+
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
-  isMaps(path){
+
+  /*isMaps(path){
       let titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
       if(path === titlee) {
@@ -69,7 +71,9 @@ export class AdminLayoutComponent implements OnInit {
       else {
           return true;
       }
-  }
+  }*/
+
+
   runOnRouteChange(): void {
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
       const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
@@ -77,6 +81,7 @@ export class AdminLayoutComponent implements OnInit {
       ps.update();
     }
   }
+
   isMac(): boolean {
       let bool = false;
       if (navigator.platform.toUpperCase().indexOf('MAC') >= 0 || navigator.platform.toUpperCase().indexOf('IPAD') >= 0) {

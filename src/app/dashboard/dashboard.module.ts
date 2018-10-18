@@ -1,30 +1,40 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardAnoComponent } from './ano/dashboard-ano.component';
 import { DashboardMesComponent } from './mes/dashboard-mes.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardService } from './dashboard.service';
+import { AmChartsModule } from '@amcharts/amcharts3-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpsRequestInterceptor } from '../_interceptor/http-interceptor';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    DashboardRoutingModule,
+    ReactiveFormsModule,
+    //DashboardRoutingModule,
+    AmChartsModule,
     MatButtonModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    MatFormFieldModule,
     MatSelectModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
+ 
   ],
 
-  declarations: [DashboardComponent, DashboardMesComponent, DashboardAnoComponent
-  ]
+  declarations: [
+    DashboardComponent, 
+    DashboardMesComponent, 
+    DashboardAnoComponent,
+    
+  ],
+  providers: [
+    DashboardService
+    
+  ],
 })
 export class DashboardModule { }

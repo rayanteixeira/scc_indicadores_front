@@ -1,0 +1,97 @@
+
+
+.table .table-active{
+   font-weight: bold;
+}
+
+.table-main{
+    margin-top: 50px;
+}
+
+input[type="date"] {
+    font-weight: bold;
+    border-radius: 5px;
+    /* padding: 5px 5px; */
+  }
+
+
+@media (max-width: 600px) {
+    .table-main{
+        margin-top: 15px;
+      }
+      
+      .table-div-container{
+          padding-right: 4px;
+          padding-left: 4px;
+      }
+      
+      .table-card-container{
+          margin-top: 0px;
+      }
+      
+      .table-card-body-container{
+          padding: 0.9375rem 5px;
+      }
+      
+      .table thead th {
+          font-size: 12px; 
+          padding: 3px 8px;
+          font-weight: bold;
+      }
+      
+      .table tbody th {
+        font-size: 12px; 
+        padding: 3px 8px;
+        font-weight: bold; 
+    }
+
+    .table tbody td {
+        font-size: 12px; 
+        padding: 3px 8px;
+        font-weight: bold;
+    }
+      
+}
+
+@media (max-width: 400px) {
+    .table-main{
+        margin-top: 20px;
+    }
+      
+    .table-div-container{
+          padding-right: 4px;
+          padding-left: 4px;
+    }
+      
+    .table-card-container{
+          margin-top: 0px;
+    }
+      
+    .table-card-body-container{
+          padding: 0.9375rem 5px;
+    }
+      
+    .table thead th {
+          font-size: 10px; 
+          padding: 3px 8px;
+          font-weight: bold;
+    }
+      
+    .table tbody th {
+        font-size: 10px; 
+        padding: 3px 8px;
+        font-weight: bold; 
+    }
+
+    .table tbody td {
+        font-size: 10px; 
+        padding: 3px 8px;
+        font-weight: bold;
+    }
+
+    .table-card-container{
+        margin-top: 5px
+    }
+      
+}
+

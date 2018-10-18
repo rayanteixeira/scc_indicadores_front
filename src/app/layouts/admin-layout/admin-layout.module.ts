@@ -3,57 +3,46 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { UserProfileComponent, RemoveDialog } from '../../user-profile/user-profile.component';
+import { MailComponent, MailRemoveDialogComponent } from '../../mail/mail.component';
 
 import {
   MatButtonModule,
   MatInputModule,
-  MatRippleModule,
-  MatTooltipModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatProgressSpinnerModule,
-  MatFormFieldModule,
   MatTableModule,
   MatIconModule,
   MatDialogModule,
+  MAT_DATE_LOCALE
+
 } from '@angular/material';
-import { AmChartsModule } from '@amcharts/amcharts3-angular';
-import { DashboardService } from '../../dashboard/dashboard.service';
-import { ResumoDiarioComponent } from '../../_resumo-diario/resumo-diario.component';
-import { ResumoDiarioService } from '../../_resumo-diario/resumo-diario.service';
-import { ResumoDoDiaComponent } from '../../_resumo-diario/_resumo-diario-lista/resumo-do-dia.component';
 
 import { DashboardModule } from '../../dashboard/dashboard.module';
+import { LoginComponent } from '../../login/login.component';
+import { ResumoDiarioModule } from '../../resumo-diario/resumo-diario.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpsRequestInterceptor } from '../../_interceptor/http-interceptor';
+
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardModule,
+    ResumoDiarioModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    AmChartsModule,
-    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
     MatTableModule,
     MatIconModule,
     MatDialogModule
   ],
   declarations: [
-    UserProfileComponent,
-    ResumoDiarioComponent,
-    ResumoDoDiaComponent,
-    RemoveDialog
+    MailComponent,
+    MailRemoveDialogComponent,
+    //LoginComponent
   ],
-  providers: [DashboardService, ResumoDiarioService ],
-  entryComponents: [RemoveDialog]
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
+  entryComponents: [MailRemoveDialogComponent]
 
 })
 
