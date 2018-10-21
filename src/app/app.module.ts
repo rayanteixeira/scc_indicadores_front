@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AuthenticationService, AlertService } from './_services';
 import { AuthGuard } from './_guards';
@@ -15,33 +16,38 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ResumoDiarioModule } from './resumo-diario/resumo-diario.module';
 import { StorageService } from './_services/storage.service';
 import { JwtHelper } from 'angular2-jwt';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
-import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
-import { UserModule } from './user/user.module';
+import { UserComponent } from './user/user.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    ComponentsModule,
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     DashboardModule,
     ResumoDiarioModule,
-    AdminLayoutModule,
-    UserModule,
     MatButtonModule,
     MatInputModule,
     MatTableModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxMaskModule.forRoot()
+
   ],
   declarations: [
     AppComponent,
+    AdminLayoutComponent,
     LoginComponent,
+    UserComponent
     // MailComponent
   ],
   // providers: [AuthService],
@@ -51,13 +57,13 @@ import { UserModule } from './user/user.module';
     AuthGuard,
     AlertService,
     StorageService,
-    // AuthInterceptorProvider,
+    //AuthInterceptorProvider,
     ErrorInterceptorProvider,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpsRequestInterceptor,
       multi: true,
-     }
+    }
   ],
   bootstrap: [AppComponent]
 })

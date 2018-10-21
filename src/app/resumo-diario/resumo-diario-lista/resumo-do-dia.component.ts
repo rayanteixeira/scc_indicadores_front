@@ -31,22 +31,22 @@ export class ResumoDoDiaComponent implements OnInit {
   rendimentoMes: any = 0;
   rendimentoSemana: any = 0;
 
-  totalcriflococo: number = 0;
-  totalcriflococoMes: number = 0;
-  totalcriflococoSemana: number = 0;
+  totalcriflococo = 0;
+  totalcriflococoMes = 0;
+  totalcriflococoSemana = 0;
 
-  totalAguaDeCoco: number = 0;
-  totalAguaDeCocoMes: number = 0;
-  totalAguaDeCocoSemana: number = 0;
+  totalAguaDeCoco = 0;
+  totalAguaDeCocoMes = 0;
+  totalAguaDeCocoSemana = 0;
 
   tabela: TabelaResumosDiarios[];
 
   dataAtual: any = moment().format('YYYY-MM-DD')
- 
+
 
   constructor(
     private resumoService: ResumoDiarioService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.cabecalhoLista();
@@ -64,19 +64,19 @@ export class ResumoDoDiaComponent implements OnInit {
       .subscribe((resumos: TabelaResumosDiarios) => {
         console.log(resumos);
 
-        if (resumos) { //se houver resumo faça...
+        if (resumos) { // se houver resumo faça...
 
           resumos.buscaSemanal[0].forEach(semana => {
             this.totalSemana.push(semana);
           });
           this.totalDia = resumos.resumosDiarios[0];
           this.totalMes = resumos.resumosMensal[0];
-          
+
           // Total do Dia.
-          if (this.totalDia) { 
-            this.totalcriflococo = parseInt(this.totalDia.cri) + parseInt(this.totalDia.flococo);
-            this.rendimento = (this.totalcriflococo / parseInt(this.totalDia.cocosProcessados)).toFixed(3);
-            this.totalAguaDeCoco = parseInt(this.totalDia.aguaDeCocoSococo) + parseInt(this.totalDia.aguaDeCocoVerde);
+          if (this.totalDia) {
+            this.totalcriflococo = (this.totalDia.cri) + (this.totalDia.flococo);
+            this.rendimento = (this.totalcriflococo / (this.totalDia.cocosProcessados)).toFixed(3);
+            this.totalAguaDeCoco = (this.totalDia.aguaDeCocoSococo) + (this.totalDia.aguaDeCocoVerde);
           } else {
             this.totalcriflococo = 0;
             this.rendimento = 0;
@@ -84,10 +84,10 @@ export class ResumoDoDiaComponent implements OnInit {
           }
 
           // Total da semana
-          if (this.totalSemana[0] != null || this.totalSemana[0] != undefined) {
-            this.totalcriflococoSemana = parseInt(this.totalSemana[2]) + parseInt(this.totalSemana[3]);
-            this.rendimentoSemana = (this.totalcriflococoSemana / parseInt(this.totalSemana[0])).toFixed(3);
-            this.totalAguaDeCocoSemana = parseInt(this.totalSemana[7]) + parseInt(this.totalSemana[8]);
+          if (this.totalSemana[0] != null || this.totalSemana[0] !== undefined) {
+            this.totalcriflococoSemana = (this.totalSemana[2]) + (this.totalSemana[3]);
+            this.rendimentoSemana = (this.totalcriflococoSemana / (this.totalSemana[0])).toFixed(3);
+            this.totalAguaDeCocoSemana = (this.totalSemana[7]) + (this.totalSemana[8]);
           } else {
             this.totalcriflococoSemana = 0;
             this.rendimentoSemana = 0;
@@ -97,16 +97,16 @@ export class ResumoDoDiaComponent implements OnInit {
 
           // Total do Mês
           if (this.totalMes) {
-            this.totalcriflococoMes = parseInt(this.totalMes.cri) + parseInt(this.totalMes.flococo);
-            this.rendimentoMes = (this.totalcriflococoMes / parseInt(this.totalMes.cocosProcessados)).toFixed(3);
-            this.totalAguaDeCocoMes = parseInt(this.totalMes.aguaDeCocoSococo) + parseInt(this.totalMes.aguaDeCocoVerde);
+            this.totalcriflococoMes = (this.totalMes.cri) + (this.totalMes.flococo);
+            this.rendimentoMes = (this.totalcriflococoMes / (this.totalMes.cocosProcessados)).toFixed(3);
+            this.totalAguaDeCocoMes = (this.totalMes.aguaDeCocoSococo) + (this.totalMes.aguaDeCocoVerde);
           } else {
             this.totalcriflococoMes = 0;
             this.rendimentoMes = 0;
             this.totalAguaDeCocoMes = 0;
 
-           
-            
+
+
           }
 
         } else {
@@ -121,58 +121,58 @@ export class ResumoDoDiaComponent implements OnInit {
 
     this.filtro.dataLancamento = this.dataAtual
     this.resumoService.buscarResumoPorData(this.filtro)
-    .subscribe((resumos: TabelaResumosDiarios) => {
-     
-      if (resumos) { // se houver resumos faça...
-        resumos.buscaSemanal[0].forEach(semana => {
-          this.totalSemana.push(semana);
-        });
-        this.totalDia = resumos.resumosDiarios[0];
-        this.totalMes = resumos.resumosMensal[0];
+      .subscribe((resumos: TabelaResumosDiarios) => {
 
-        // Total do Dia.
-        if (this.totalDia) { 
-          this.totalcriflococo = parseInt(this.totalDia.cri) + parseInt(this.totalDia.flococo);
-          this.rendimento = (this.totalcriflococo / parseInt(this.totalDia.cocosProcessados)).toFixed(3);
-          this.totalAguaDeCoco = parseInt(this.totalDia.aguaDeCocoSococo) + parseInt(this.totalDia.aguaDeCocoVerde);
+        if (resumos) { // se houver resumos faça...
+          resumos.buscaSemanal[0].forEach(semana => {
+            this.totalSemana.push(semana);
+          });
+          this.totalDia = resumos.resumosDiarios[0];
+          this.totalMes = resumos.resumosMensal[0];
+
+          // Total do Dia.
+          if (this.totalDia) {
+            this.totalcriflococo = (this.totalDia.cri) + (this.totalDia.flococo);
+            this.rendimento = (this.totalcriflococo / (this.totalDia.cocosProcessados)).toFixed(3);
+            this.totalAguaDeCoco = (this.totalDia.aguaDeCocoSococo) + (this.totalDia.aguaDeCocoVerde);
+          } else {
+            this.totalcriflococo = 0;
+            this.rendimento = 0;
+            this.totalAguaDeCoco = 0;
+          }
+
+          // Total da semana
+          if (this.totalSemana[0] != null || this.totalSemana[0] !== undefined) {
+            this.totalcriflococoSemana = (this.totalSemana[2]) + (this.totalSemana[3]);
+            this.rendimentoSemana = (this.totalcriflococoSemana / (this.totalSemana[0])).toFixed(3);
+            this.totalAguaDeCocoSemana = (this.totalSemana[7]) + (this.totalSemana[8]);
+          } else {
+            this.totalcriflococoSemana = 0;
+            this.rendimentoSemana = 0;
+            this.totalAguaDeCocoSemana = 0;
+
+          }
+
+          // Total do Mês
+          if (this.totalMes) {
+            this.totalcriflococoMes = (this.totalMes.cri) + (this.totalMes.flococo);
+            this.rendimentoMes = (this.totalcriflococoMes / (this.totalMes.cocosProcessados)).toFixed(3);
+            this.totalAguaDeCocoMes = (this.totalMes.aguaDeCocoSococo) + (this.totalMes.aguaDeCocoVerde);
+          } else {
+            this.totalcriflococoMes = 0;
+            this.rendimentoMes = 0;
+            this.totalAguaDeCocoMes = 0;
+
+
+
+          }
+
         } else {
-          this.totalcriflococo = 0;
-          this.rendimento = 0;
-          this.totalAguaDeCoco = 0;
+          this.totalDia = new ResumoDiario();
+          this.totalMes = new ResumoDiario();
+          this.totalSemana = []
         }
-
-        // Total da semana
-        if (this.totalSemana[0] != null || this.totalSemana[0] != undefined) {
-          this.totalcriflococoSemana = parseInt(this.totalSemana[2]) + parseInt(this.totalSemana[3]);
-          this.rendimentoSemana = (this.totalcriflococoSemana / parseInt(this.totalSemana[0])).toFixed(3);
-          this.totalAguaDeCocoSemana = parseInt(this.totalSemana[7]) + parseInt(this.totalSemana[8]);
-        } else {
-          this.totalcriflococoSemana = 0;
-          this.rendimentoSemana = 0;
-          this.totalAguaDeCocoSemana = 0;
-
-        }
-
-        // Total do Mês
-        if (this.totalMes) {
-          this.totalcriflococoMes = parseInt(this.totalMes.cri) + parseInt(this.totalMes.flococo);
-          this.rendimentoMes = (this.totalcriflococoMes / parseInt(this.totalMes.cocosProcessados)).toFixed(3);
-          this.totalAguaDeCocoMes = parseInt(this.totalMes.aguaDeCocoSococo) + parseInt(this.totalMes.aguaDeCocoVerde);
-        } else {
-          this.totalcriflococoMes = 0;
-          this.rendimentoMes = 0;
-          this.totalAguaDeCocoMes = 0;
-
-         
-          
-        }
-
-      } else {
-        this.totalDia = new ResumoDiario();
-        this.totalMes = new ResumoDiario();
-        this.totalSemana = []
-      }
-    });
+      });
   }
 
   public cabecalhoLista(): void {
