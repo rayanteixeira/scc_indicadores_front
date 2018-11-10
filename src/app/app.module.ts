@@ -20,7 +20,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
 import { UserComponent } from './user/user.component';
-import { NgxMaskModule } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 @NgModule({
   imports: [
@@ -40,7 +40,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    NgxMaskModule.forRoot()
+    NgxCurrencyModule
 
   ],
   declarations: [

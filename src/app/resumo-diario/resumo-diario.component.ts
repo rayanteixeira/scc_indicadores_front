@@ -14,7 +14,7 @@ import * as moment from 'moment'
 })
 export class ResumoDiarioComponent implements OnInit {
 
-
+ 
   formulario: FormGroup;
 
   loader = false;
@@ -27,7 +27,7 @@ export class ResumoDiarioComponent implements OnInit {
     private title: Title,
     private fb: FormBuilder,
     private resumoService: ResumoDiarioService,
-  ) { }
+  ) {   }
 
   ngOnInit() {
     this.title.setTitle('Cadastro lançamento');
