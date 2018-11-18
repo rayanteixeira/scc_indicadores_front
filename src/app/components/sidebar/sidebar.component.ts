@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/resumo-diario', title: 'Cadastrar Resumo',  icon:'input', class: '' },
     { path: '/dashboard', title: 'Analisar Resumo',  icon: 'dashboard', class: '' },
     { path: '/mail', title: 'Email',  icon:'mail', class: '' },
-    { path: '/login', title: 'Sair',  icon:'logout', class: 'active-pro' },
+   // { path: '/login', title: 'Sair',  icon:'logout', class: 'active-pro' },
     
 ];
 

@@ -7,6 +7,9 @@ import { ResumoDiarioComponent } from './resumo-diario.component';
 import { ResumoDoDiaComponent } from './resumo-diario-lista/resumo-do-dia.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpsRequestInterceptor } from '../_interceptor/http-interceptor';
+import { BrMasker4Module } from 'brmasker4';
+import {IMaskModule} from 'angular-imask';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +19,9 @@ import { HttpsRequestInterceptor } from '../_interceptor/http-interceptor';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    BrMasker4Module,
+    IMaskModule
   ],
 
   declarations: [

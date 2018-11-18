@@ -56,6 +56,7 @@ export class ResumoDiarioComponent implements OnInit {
   }
 
   onSubmit(formulario: FormGroup, formDirective: FormGroupDirective) {
+    console.log(formulario);
     this.loader = true;
     this.resumoService.salvarResumo(formulario)
       .subscribe(response => {
@@ -64,8 +65,6 @@ export class ResumoDiarioComponent implements OnInit {
         this.formulario.reset();
         this.loader = false;
       });
-
-
   }
 
 }

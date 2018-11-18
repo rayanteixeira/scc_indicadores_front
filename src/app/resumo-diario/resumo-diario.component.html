@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '000.000'}"
                                             type="text"
                                             placeholder="Cocos Processados (und)" formControlName="cocosProcessados"
                                             autocomplete="off">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
+                                        <input matInput [imask]="{mask: '000.000'}"
                                             placeholder="Cocos Desfibrados (und)" formControlName="cocosDesfibrados"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['cocosDesfibrados'].valid">
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '00.000'}"
                                             placeholder="C.R.I (kg)" formControlName="cri" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['cri'].valid">
                                             campo
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
+                                        <input matInput [imask]="{mask: '00.000'}"
                                             placeholder="Flococo (kg)" formControlName="flococo" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['flococo'].valid">
                                             campo
@@ -70,7 +70,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '00.000'}"
                                             placeholder="Óleo Industrial Tipo A (L)" formControlName="oleoIndustrialTipoA"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialTipoA'].valid">
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
+                                        <input matInput [imask]="{mask: '000.000'}"
                                             placeholder="Óleo Industrial ETE (L)" formControlName="oleoIndustrialETE"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialETE'].valid">
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '0.000'}"
                                             placeholder="Torta (ração - kg)" formControlName="torta" autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['torta'].valid">
                                             campo
@@ -121,7 +121,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '00000.00'}"
                                             placeholder="Água de Coco Sococo (L)" formControlName="aguaDeCocoSococo"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoSococo'].valid">
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
+                                        <input matInput [imask]="{mask: '00000.00'}"
                                             placeholder="Água de Coco Verde (L)" formControlName="aguaDeCocoVerde"
                                             autocomplete="off">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoVerde'].valid">
@@ -213,6 +213,7 @@
 
             <mat-spinner *ngIf="loader" class="pull-right" [strokeWidth]="2" [diameter]="42"></mat-spinner>
             <button mat-raised-button type="submit" class="btn btn-success pull-right" [disabled]="!formulario.valid">Salvar</button>
+            <button mat-raised-button type="submit" class="btn btn-success pull-right" >Salvar</button>
             <button mat-raised-button type="reset" class="btn pull-right">Cancelar</button>
 
             <div class="clearfix"></div>

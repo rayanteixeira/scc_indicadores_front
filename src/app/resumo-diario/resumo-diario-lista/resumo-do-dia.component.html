@@ -29,13 +29,13 @@
                                     <tr>
                                         <th>Cocos Proces. (und)</th>
                                         <td>{{(totalDia != null) ? totalDia.cocosProcessados : 0}}</td>
-                                        <td>{{(totalSemana[0] != null) ? totalSemana[0] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.cocosProcessados : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.cocosProcessados : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Cocos Desf. (und)</th>
                                         <td>{{(totalDia != null) ? totalDia.cocosDesfibrados : 0}}</td>
-                                        <td>{{(totalSemana[1] != null) ? totalSemana[1] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.cocosDesfibrados : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.cocosDesfibrados : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
@@ -49,13 +49,13 @@
                                     <tr>
                                         <th>C.R.I (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.cri : 0}}</td>
-                                        <td>{{(totalSemana[2] != null) ? totalSemana[2] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.cri : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.cri : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Flococo (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.flococo : 0}}</td>
-                                        <td>{{(totalSemana[3] != null) ? totalSemana[3] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.flococo : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.flococo : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
@@ -69,19 +69,19 @@
                                     <tr>
                                         <th>Óleo Ind. Tipo A (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialTipoA : 0 }}</td>
-                                        <td>{{(totalSemana[4] != null) ? totalSemana[4] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.oleoIndustrialTipoA : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.oleoIndustrialTipoA : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Óleo Ind. E.T.E (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.oleoIndustrialETE : 0}}</td>
-                                        <td>{{(totalSemana[5] != null) ? totalSemana[5] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.oleoIndustrialETE : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.oleoIndustrialETE : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Torta - Ração (kg)</th>
                                         <td>{{(totalDia != null) ? totalDia.torta : 0}}</td>
-                                        <td>{{(totalSemana[6] != null) ? totalSemana[6] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.torta : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.torta : 0}}</td>
                                     </tr>
                                     <!-- PRODUCAO ACQUA -->
@@ -95,13 +95,13 @@
                                     <tr>
                                         <th>Água de C. Sococo (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoSococo : 0 }}</td>
-                                        <td>{{(totalSemana[7] != null) ? totalSemana[7] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.aguaDeCocoSococo : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.aguaDeCocoSococo : 0}}</td>
                                     </tr>
                                     <tr>
                                         <th>Água de C. Verde (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.aguaDeCocoVerde : 0}}</td>
-                                        <td>{{(totalSemana[8] != null) ? totalSemana[8] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.aguaDeCocoVerde : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.aguaDeCocoVerde : 0}}</td>
                                     </tr>
                                     <tr class="table-active">
@@ -115,7 +115,7 @@
                                     <tr>
                                         <th>Caixa Padrão (und)</th>
                                         <td>{{(totalDia != null) ? totalDia.caixaPadrao : 0}}</td>
-                                        <td>{{(totalSemana[9] != null) ? totalSemana[9] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.caixaPadrao : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.caixaPadrao : 0}}</td>
                                     </tr>
                                     <tr>
@@ -131,7 +131,7 @@
                                     <tr>
                                         <th> Total de Cacambas</th>
                                         <td>{{(totalDia != null) ? totalDia.totalDeCacambas : 0}}</td>
-                                        <td>{{(totalSemana[11] != null) ? totalSemana[11] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.totalDeCacambas : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.totalDeCacambas : 0}}</td>
                                     </tr>
 
@@ -145,7 +145,7 @@
                                     <tr>
                                         <th>Nº de Fardos (L)</th>
                                         <td>{{(totalDia != null) ? totalDia.numeroDeFardos : 0 }}</td>
-                                        <td>{{(totalSemana[12] != null) ? totalSemana[12] : 0}}</td>
+                                        <td>{{(totalSemana != null) ? totalSemana.numeroDeFardos : 0}}</td>
                                         <td>{{(totalMes != null) ? totalMes.numeroDeFardos : 0}}</td>
                                     </tr>
                                 </tbody>
