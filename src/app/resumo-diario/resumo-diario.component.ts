@@ -14,7 +14,27 @@ import * as moment from 'moment'
 })
 export class ResumoDiarioComponent implements OnInit {
 
- 
+
+  imaskConfig = {
+    mask: Number,
+    // scale: 2,
+    thousandsSeparator: '.',
+   // padFractionalZeros: true,
+    normalizeZeros: true,
+    // radix: ','
+  };
+
+  imaskConfigRadix = {
+    mask: Number,
+    scale: 2,
+    thousandsSeparator: '.',
+    padFractionalZeros: true,
+    normalizeZeros: true,
+    radix: ','
+  };
+
+
+
   formulario: FormGroup;
 
   loader = false;
