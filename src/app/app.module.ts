@@ -20,8 +20,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
 
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +30,7 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+
     DashboardModule,
     ResumoDiarioModule,
     MatButtonModule,
@@ -40,7 +38,7 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
     MatTableModule,
     MatIconModule,
     MatDialogModule
-    
+
   ],
   declarations: [
     AppComponent,
@@ -61,7 +59,7 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpsRequestInterceptor,
       multi: true,
-     }
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,20 +1,20 @@
 export class Sococo {
     titulo: string;
-    coco_processado: string;
-    coco_desfibrado: string;
-    cri: string;
-    flococo: string;
-    oleo_ind_a: string;
-    oleo_ind_ete: string;
-    torta: string;
+    coco_processado: number;
+    coco_desfibrado: number;
+    cri: number;
+    flococo: number;
+    oleo_ind_a: number;
+    oleo_ind_ete: number;
+    torta: number;
     constructor(
-        coco_processado?: string,
-        coco_desfibrado?: string,
-        cri?: string,
-        flococo?: string,
-        oleo_ind_a?: string,
-        oleo_ind_ete?: string,
-        torta?: string
+        coco_processado?: number,
+        coco_desfibrado?: number,
+        cri?: number,
+        flococo?: number,
+        oleo_ind_a?: number,
+        oleo_ind_ete?: number,
+        torta?: number
     ) {
         this.titulo = 'Produção Sococo';
         this.coco_processado = coco_processado;
@@ -26,20 +26,19 @@ export class Sococo {
         this.torta = torta
     }
 }
-
 export class Acqua {
     titulo: string;
-    agua_coco_sococo: string;
-    agua_coco_verde: string;
-    porcentagem_coco_germinado: any;
-    total_cacambas: string;
-    caixa_padrao: string;
+    agua_coco_sococo: number;
+    agua_coco_verde: number;
+    porcentagem_coco_germinado: number;
+    total_cacambas: number;
+    caixa_padrao: number;
     constructor(
-        agua_coco_sococo?: string,
-        agua_coco_verde?: string,
-        porcentagem_coco_germinado?: any,
-        total_cacambas?: string,
-        caixa_padrao?: string,
+        agua_coco_sococo?: number,
+        agua_coco_verde?: number,
+        porcentagem_coco_germinado?: number,
+        total_cacambas?: number,
+        caixa_padrao?: number,
     ) {
         this.titulo = 'Produção Acqua';
         this.agua_coco_sococo = agua_coco_sococo;
@@ -49,23 +48,21 @@ export class Acqua {
         this.caixa_padrao = caixa_padrao;
     }
 }
-
 export class Amafibra {
     titulo: string;
-    numero_fardos: string;
+    numero_fardos: number;
 
     constructor(
-        numero_fardos?: string
+        numero_fardos?: number
     ) {
         this.titulo = 'Produção Amafibra';
         this.numero_fardos = numero_fardos
     }
 }
-
 export class Lancamento {
 
-    cocosProcessados: string;
-    cocosDesfibrados: string;
+    cocosProcessados: number;
+    cocosDesfibrados: number;
     cri;
     flococo;
     oleoIndustrialTipoA;
@@ -77,56 +74,53 @@ export class Lancamento {
     totalDeCacambas;
     caixaPadrao;
     numeroDeFardos;
-    constructor() {}
+    constructor() { }
 }
-
 export class ResumoDiario {
 
     constructor(
         public dataLancamento?: Date,
-        public cocosDesfibrados?: string,
-        public cocosProcessados?: string,
-        public cri?: string,
-        public flococo?: string,
-        public oleoIndustrialETE?: string,
-        public oleoIndustrialTipoA?: string,
-        public torta?: string,
+        public cocosDesfibrados?: number,
+        public cocosProcessados?: any,
+        public cri?: any,
+        public flococo?: any,
+        public oleoIndustrialETE?: number,
+        public oleoIndustrialTipoA?: number,
+        public torta?: number,
 
-        public aguaDeCocoSococo?: string,
-        public aguaDeCocoVerde?: string,
-        public porcentagemCocoGerminado?: string,
-        public caixaPadrao?: string,
-        public totalDeCacambas?: string,
-        public numeroDeFardos?: string,
+        public aguaDeCocoSococo?: any,
+        public aguaDeCocoVerde?: any,
+        public porcentagemCocoGerminado?: number,
+        public caixaPadrao?: number,
+        public totalDeCacambas?: number,
+        public numeroDeFardos?: number,
 
-    ) { 
-        this.cocosProcessados = '0';
-        this.cocosDesfibrados = '0';
-        this.cocosProcessados = '0';
-        this.cri = '0';
-        this.flococo = '0';
-        this.oleoIndustrialETE = '0';
-        this.oleoIndustrialTipoA = '0';
-        this.torta = '0';
-        this.aguaDeCocoSococo = '0';
-        this.aguaDeCocoVerde = '0';
-        this.porcentagemCocoGerminado = '0';
-        this.caixaPadrao = '0';
-        this.totalDeCacambas = '0';
-        this.numeroDeFardos = '0';
+    ) {
+        this.cocosProcessados = 0;
+        this.cocosDesfibrados = 0;
+        this.cocosProcessados = 0;
+        this.cri = 0;
+        this.flococo = 0;
+        this.oleoIndustrialETE = 0;
+        this.oleoIndustrialTipoA = 0;
+        this.torta = 0;
+        this.aguaDeCocoSococo = 0;
+        this.aguaDeCocoVerde = 0;
+        this.porcentagemCocoGerminado = 0;
+        this.caixaPadrao = 0;
+        this.totalDeCacambas = 0;
+        this.numeroDeFardos = 0;
     }
 
 }
-
-
 export class TabelaResumosDiarios {
 
     public resumosDiarios?: ResumoDiario[];
     public resumosMensal?: ResumoDiario[];
-    public buscaSemanal?: any [];
+    public buscaSemanal?: any[];
     constructor(
         resumosDiarios: ResumoDiario[],
         resumosMensal?: ResumoDiario[],
         buscaSemanal?: any[]
-    ) {}
+    ) { }
 }

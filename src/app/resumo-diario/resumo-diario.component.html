@@ -23,9 +23,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Cocos Processados (und)" formControlName="cocosProcessados"
-                                            autocomplete="off">
+                                        <input matInput type="text" placeholder="Cocos Processados (und)"
+                                            formControlName="cocosProcessados" autocomplete="off" currencyMask
+                                             [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['cocosProcessados'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -34,9 +34,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
-                                            placeholder="Cocos Desfibrados (und)" formControlName="cocosDesfibrados"
-                                            autocomplete="off">
+                                        <input matInput  placeholder="Cocos Desfibrados (und)"
+                                            formControlName="cocosDesfibrados" autocomplete="off" currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }" >
                                         <mat-error *ngIf="!formulario.controls['cocosDesfibrados'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -47,8 +47,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="C.R.I (kg)" formControlName="cri" autocomplete="off">
+                                        <input matInput  placeholder="C.R.I (kg)"
+                                            formControlName="cri" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['cri'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -57,8 +58,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
-                                            placeholder="Flococo (kg)" formControlName="flococo" autocomplete="off">
+                                        <input matInput  placeholder="Flococo (kg)"
+                                            formControlName="flococo" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['flococo'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -69,9 +71,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Óleo Industrial Tipo A (L)" formControlName="oleoIndustrialTipoA"
-                                            autocomplete="off">
+                                        <input matInput  placeholder="Óleo Industrial Tipo A (L)"
+                                            formControlName="oleoIndustrialTipoA" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialTipoA'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -80,9 +82,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput 
-                                            placeholder="Óleo Industrial ETE (L)" formControlName="oleoIndustrialETE"
-                                            autocomplete="off">
+                                        <input matInput  placeholder="Óleo Industrial ETE (L)"
+                                            formControlName="oleoIndustrialETE" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['oleoIndustrialETE'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -93,8 +95,9 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Torta (ração - kg)" formControlName="torta" autocomplete="off">
+                                        <input matInput  placeholder="Torta (ração - kg)"
+                                            formControlName="torta" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['torta'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -120,9 +123,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Água de Coco Sococo (L)" formControlName="aguaDeCocoSococo"
-                                            autocomplete="off">
+                                        <input matInput  placeholder="Água de Coco Sococo (L)"
+                                            formControlName="aguaDeCocoSococo" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 2, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoSococo'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -131,9 +134,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Água de Coco Verde (L)" formControlName="aguaDeCocoVerde"
-                                            autocomplete="off">
+                                        <input matInput  placeholder="Água de Coco Verde (L)"
+                                            formControlName="aguaDeCocoVerde" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 2, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['aguaDeCocoVerde'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -144,8 +147,9 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Caixa Padrão (und)" formControlName="caixaPadrao" autocomplete="off">
+                                        <input matInput placeholder="Caixa Padrão (und)" formControlName="caixaPadrao"
+                                            autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['caixaPadrao'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -154,9 +158,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Coco Germinado (%)" formControlName="porcentagemCocoGerminado"
-                                            autocomplete="off">
+                                        <input matInput placeholder="Coco Germinado (%)" formControlName="porcentagemCocoGerminado"
+                                            autocomplete="off"  currencyMask
+                                            [options]="{ prefix: '% ', precision: 2, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['porcentagemCocoGerminado'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -165,9 +169,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Total de Cacambas" formControlName="totalDeCacambas"
-                                            autocomplete="off">
+                                        <input matInput placeholder="Total de Cacambas" formControlName="totalDeCacambas"
+                                            autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['totalDeCacambas'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -193,9 +197,9 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput
-                                            placeholder="Número de Fardos" id="numeroDeFardos" formControlName="numeroDeFardos"
-                                            autocomplete="off">
+                                        <input matInput placeholder="Número de Fardos" id="numeroDeFardos"
+                                            formControlName="numeroDeFardos" autocomplete="off"  currencyMask
+                                            [options]="{ prefix: ' ', precision: 0, thousands: '.', decimal: ',' }">
                                         <mat-error *ngIf="!formulario.controls['numeroDeFardos'].valid">
                                             campo
                                             <strong>obrigatório</strong>
@@ -212,6 +216,7 @@
 
             <mat-spinner *ngIf="loader" class="pull-right" [strokeWidth]="2" [diameter]="42"></mat-spinner>
             <button mat-raised-button type="submit" class="btn btn-success pull-right" [disabled]="!formulario.valid">Salvar</button>
+            <button mat-raised-button type="submit" class="btn btn-success pull-right">Salvar</button>
             <button mat-raised-button type="reset" class="btn pull-right">Cancelar</button>
 
             <div class="clearfix"></div>
