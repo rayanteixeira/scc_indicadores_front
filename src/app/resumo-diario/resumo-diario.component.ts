@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { ResumoDiarioService } from './resumo-diario.service';
-import {FormControl, Validators,  FormGroup, FormBuilder, FormGroupDirective} from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
 
 import * as moment from 'moment'
 
@@ -15,6 +15,26 @@ import * as moment from 'moment'
 export class ResumoDiarioComponent implements OnInit {
 
 
+  imaskConfig = {
+    mask: Number,
+    // scale: 2,
+    thousandsSeparator: '.',
+   // padFractionalZeros: true,
+    normalizeZeros: true,
+    // radix: ','
+  };
+
+  imaskConfigRadix = {
+    mask: Number,
+    scale: 2,
+    thousandsSeparator: '.',
+    padFractionalZeros: true,
+    normalizeZeros: true,
+    radix: ','
+  };
+
+
+
   formulario: FormGroup;
 
   loader = false;
@@ -22,12 +42,12 @@ export class ResumoDiarioComponent implements OnInit {
   inputVazio: string;
 
   dataAtual: any = moment().format('YYYY-MM-DD')
- 
+
   constructor(
     private title: Title,
     private fb: FormBuilder,
     private resumoService: ResumoDiarioService,
-  ) { }
+  ) {   }
 
   ngOnInit() {
     this.title.setTitle('Cadastro lançamento');
@@ -55,18 +75,17 @@ export class ResumoDiarioComponent implements OnInit {
     })
   }
 
-  onSubmit(formulario: FormGroup, formDirective: FormGroupDirective ) {
+  onSubmit(formulario: FormGroup, formDirective: FormGroupDirective) {
+    console.log(formulario);
     this.loader = true;
     console.log(formulario);
     this.resumoService.salvarResumo(formulario)
-       .subscribe(response => {
-         console.log(response);
-         formDirective.resetForm();
-         this.formulario.reset();
-         this.loader = false;
-       });
-
-
+      .subscribe(response => {
+        console.log(response);
+        formDirective.resetForm();
+        this.formulario.reset();
+        this.loader = false;
+      });
   }
 
 }

@@ -19,7 +19,7 @@ import { JwtHelper } from 'angular2-jwt';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpsRequestInterceptor } from './_interceptor/http-interceptor';
 import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
-
+import { UserComponent } from './user/user.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -44,7 +44,8 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    //MailComponent
+    UserComponent
+    // MailComponent
   ],
   // providers: [AuthService],
   providers: [
@@ -53,7 +54,7 @@ import { ErrorInterceptorProvider } from './_interceptor/error-Interceptor';
     AuthGuard,
     AlertService,
     StorageService,
-    //AuthInterceptorProvider,
+    // AuthInterceptorProvider,
     ErrorInterceptorProvider,
     {
       provide: HTTP_INTERCEPTORS,

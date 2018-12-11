@@ -61,12 +61,7 @@ export class ResumoDoDiaComponent implements OnInit {
     this.filtro.dataLancamento = event
     this.resumoService.buscarResumoPorData(this.filtro)
       .subscribe((resumos: TabelaResumosDiarios) => {
-        console.log(resumos);
-
         if (resumos) { // se houver resumo faça...
-
-
-
           this.totalDia = resumos.resumosDiarios[0];
          // this.totalDia.cocosProcessados = new Intl.NumberFormat('pt-BR').format(this.totalDia.cocosProcessados).toString();
           this.totalSemana = resumos.buscaSemanal[0];
@@ -105,9 +100,6 @@ export class ResumoDoDiaComponent implements OnInit {
             this.totalcriflococoMes = 0;
             this.rendimentoMes = 0;
             this.totalAguaDeCocoMes = 0;
-
-
-
           }
 
         } else {
@@ -125,8 +117,6 @@ export class ResumoDoDiaComponent implements OnInit {
       .subscribe((resumos: TabelaResumosDiarios) => {
 
         if (resumos) { // se houver resumos faça...
-
-
           this.totalDia = resumos.resumosDiarios[0];
           this.totalSemana = resumos.buscaSemanal[0];
           this.totalMes = resumos.resumosMensal[0];
@@ -164,9 +154,6 @@ export class ResumoDoDiaComponent implements OnInit {
             this.totalcriflococoMes = 0;
             this.rendimentoMes = 0;
             this.totalAguaDeCocoMes = 0;
-
-
-
           }
 
         } else {

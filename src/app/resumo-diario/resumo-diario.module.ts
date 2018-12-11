@@ -8,7 +8,6 @@ import { ResumoDiarioComponent } from './resumo-diario.component';
 import { ResumoDoDiaComponent } from './resumo-diario-lista/resumo-do-dia.component';
 import { NumberConverterFormatPipe } from 'app/components/pipes/numberConvertFormat.pipe';
 import { NumberConverterFormat2Pipe } from 'app/components/pipes/numberConvertFormat2.pipe';
-
 @NgModule({
   imports: [
     CommonModule,

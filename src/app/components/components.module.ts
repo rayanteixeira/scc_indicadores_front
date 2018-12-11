@@ -6,12 +6,10 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { InputComponent } from './input/input.component';
-
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-
   ],
   declarations: [
     FooterComponent,
@@ -22,7 +20,8 @@ import { InputComponent } from './input/input.component';
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    InputComponent
   ]
 })
 export class ComponentsModule { }

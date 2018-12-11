@@ -37,14 +37,14 @@ export class ResumoDiarioService {
 
     return this.http.get<any>(`${this.resumoUrl}/resumo-diario`, option)
       .map((resposta) => resposta)
-      //.catch(ErrorHandler.handlerError);
+      // .catch(ErrorHandler.handlerError);
   }
 
  
   destinatarios(): Observable<any> {
     return this.http.get<any>(`${this.resumoUrl}/destinatario`)
       .map((resposta) => resposta)
-      //.catch(ErrorHandler.handlerError);
+      // .catch(ErrorHandler.handlerError);
   }
 
   removeDestinatario(element): Observable<any> {
